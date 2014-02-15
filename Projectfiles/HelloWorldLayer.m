@@ -41,6 +41,22 @@
         apple.position = ccp(screenCenter.x, screenCenter.y);
         [self addChild:apple z:3];
         
+        appleLeft = NO;
+        appleRight = NO;
+        
+        
+        CCLabelTTF *right = [CCLabelTTF labelWithString:@"Right" fontName:@"Arial" fontSize:40];
+        
+        CCLabelTTF *left = [CCLabelTTF labelWithString:@"Left" fontName:@"Arial" fontSize:40];
+        
+        CCMenuItemLabel *starMenuItem = [CCMenuItemLabel itemWithLabel:right target:self selector:@selector(rightButtonPushed)];
+        CCMenuItemLabel *starMenuItemTwo = [CCMenuItemLabel itemWithLabel:left target:self selector:@selector(leftButtonPushed)];
+        
+        CCMenu *starMenu = [CCMenu menuWithItems:starMenuItemTwo, starMenuItem, nil];
+        starMenu.position = ccp(screenCenter.x, screenCenter.y-200);
+        [starMenu alignItemsHorizontallyWithPadding:12];
+        [self addChild:starMenu];
+        
         // Run the update method
         [self scheduleUpdate];
 	}
@@ -50,7 +66,29 @@
 
 -(void) update:(ccTime)delta
 {
+    if (appleRight == TRUE) {
+        apple.position = ccp(apple.position.x + 1*delta, screenCenter.y);
+//        appleRight = FALSE;
+    } else if (appleLeft== TRUE) {
+        apple.position = ccp(apple.position.x - 1*delta, screenCenter.y);
+//        appleLeft = FALSE;
+    }
+    
 }
+
+-(void) rightButtonPushed {
+//    appleRight = TRUE;
+    id actionMove = [CCMoveTo actionWithDuration:0.2 position:ccp(apple.position.x + 12, screenCenter.y)];
+    [apple runAction:actionMove];
+}
+
+-(void) leftButtonPushed {
+//    appleLeft = TRUE;
+    id actionMove = [CCMoveTo actionWithDuration:0.2 position:ccp(apple.position.x - 12, screenCenter.y)];
+    [apple runAction:actionMove];
+
+}
+
 
 //-(void) accelerometer:(UIAccelerometer *)accelerometer
 //        didAccelerate:(UIAcceleration *)acceleration
@@ -73,7 +111,6 @@
 //    
 //    apple.velocity = ccp(velocityX, apple.velocity.y);
 //}
-
 
 
 -(void) scroll:(ccTime)dt

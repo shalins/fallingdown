@@ -22,6 +22,9 @@
     
     Apple *apple;
     
+    BOOL appleRight;
+    BOOL appleLeft;
+    
 }
 
 @property (nonatomic, assign) CGPoint velocity;
