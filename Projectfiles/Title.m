@@ -18,8 +18,9 @@
         screenCenter = [CCDirector sharedDirector].screenCenter;
         screenSize = [[CCDirector sharedDirector] winSize];
         
-        
-        
+        CCSprite *newtonUnderTree = [CCSprite spriteWithFile:@"newtonundertree.png"];
+        newtonUnderTree.position = ccp(screenCenter.x,screenCenter.y);
+        [self addChild:newtonUnderTree];
     }
     return self;
 }

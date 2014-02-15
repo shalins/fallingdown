@@ -11,6 +11,10 @@
 		7051AD9118ADC35B00FD227F /* background-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7051AD8E18ADC35B00FD227F /* background-iphone5hd.png */; };
 		7051AD9218ADC35B00FD227F /* background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7051AD8F18ADC35B00FD227F /* background-hd.png */; };
 		7051AD9818AEF0FD00FD227F /* Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 7051AD9718AEF0FD00FD227F /* Title.m */; };
+		7055C82218AF420C006C287A /* newtonundertree.png in Resources */ = {isa = PBXBuildFile; fileRef = 7055C81E18AF420C006C287A /* newtonundertree.png */; };
+		7055C82318AF420C006C287A /* newtonundertree-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7055C81F18AF420C006C287A /* newtonundertree-hd.png */; };
+		7055C82418AF420C006C287A /* newton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7055C82018AF420C006C287A /* newton.png */; };
+		7055C82518AF420C006C287A /* newton-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7055C82118AF420C006C287A /* newton-hd.png */; };
 		DC21B88B1511078F00FD4891 /* fps_images-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B8881511078F00FD4891 /* fps_images-hd.png */; };
 		DC21B88C1511078F00FD4891 /* fps_images-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B8891511078F00FD4891 /* fps_images-ipadhd.png */; };
 		DC21B88D1511078F00FD4891 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B88A1511078F00FD4891 /* fps_images.png */; };
@@ -60,6 +64,10 @@
 		7051AD8F18ADC35B00FD227F /* background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-hd.png"; sourceTree = "<group>"; };
 		7051AD9618AEF0FC00FD227F /* Title.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Title.h; sourceTree = "<group>"; };
 		7051AD9718AEF0FD00FD227F /* Title.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Title.m; sourceTree = "<group>"; };
+		7055C81E18AF420C006C287A /* newtonundertree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newtonundertree.png; sourceTree = "<group>"; };
+		7055C81F18AF420C006C287A /* newtonundertree-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newtonundertree-hd.png"; sourceTree = "<group>"; };
+		7055C82018AF420C006C287A /* newton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newton.png; sourceTree = "<group>"; };
+		7055C82118AF420C006C287A /* newton-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newton-hd.png"; sourceTree = "<group>"; };
 		DC21B8881511078F00FD4891 /* fps_images-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-hd.png"; sourceTree = "<group>"; };
 		DC21B8891511078F00FD4891 /* fps_images-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-ipadhd.png"; sourceTree = "<group>"; };
 		DC21B88A1511078F00FD4891 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
@@ -250,6 +258,10 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7055C81E18AF420C006C287A /* newtonundertree.png */,
+				7055C81F18AF420C006C287A /* newtonundertree-hd.png */,
+				7055C82018AF420C006C287A /* newton.png */,
+				7055C82118AF420C006C287A /* newton-hd.png */,
 				7051AD8D18ADC35B00FD227F /* background.png */,
 				7051AD8E18ADC35B00FD227F /* background-iphone5hd.png */,
 				7051AD8F18ADC35B00FD227F /* background-hd.png */,
@@ -354,8 +366,12 @@
 				DCC1A0FE13A94ED5005BD75D /* Icon-72.png in Resources */,
 				DCC1A10013A94ED5005BD75D /* Icon-Small-50.png in Resources */,
 				DCC1A10213A94ED5005BD75D /* Icon-Small.png in Resources */,
+				7055C82218AF420C006C287A /* newtonundertree.png in Resources */,
 				DCC1A10413A94ED5005BD75D /* Icon-Small@2x.png in Resources */,
 				DCC1A10613A94ED5005BD75D /* Icon.png in Resources */,
+				7055C82318AF420C006C287A /* newtonundertree-hd.png in Resources */,
+				7055C82518AF420C006C287A /* newton-hd.png in Resources */,
+				7055C82418AF420C006C287A /* newton.png in Resources */,
 				DCC1A10813A94ED5005BD75D /* Icon@2x.png in Resources */,
 				DCC1A3AF13A94F1A005BD75D /* config.lua in Resources */,
 				DC21B88B1511078F00FD4891 /* fps_images-hd.png in Resources */,

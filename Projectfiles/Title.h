@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Title : NSObject
+@interface Title : CCLayer
 {
     // get screen center and screen size
     CGPoint screenCenter;
