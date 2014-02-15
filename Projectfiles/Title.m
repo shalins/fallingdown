@@ -7,6 +7,7 @@
 //
 
 #import "Title.h"
+#import "HelloWorldLayer.h"
 
 @implementation Title
 
@@ -21,11 +22,21 @@
         CCSprite *newtonUnderTree = [CCSprite spriteWithFile:@"newtonundertree.png"];
         newtonUnderTree.position = ccp(screenCenter.x,screenCenter.y);
         [self addChild:newtonUnderTree];
+        
+        
     }
     return self;
 }
 
 
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if (motion == UIEventSubtypeMotionShake)
+    {
+        [[CCDirector sharedDirector] replaceScene:
+         [CCTransitionCrossFade transitionWithDuration:0.5f scene:[HelloWorldLayer node]]];
+    } 
+}
 
 
 @end
