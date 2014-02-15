@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Title : CCLayer
+@interface Title : CCLayer <UIAccelerometerDelegate>
 {
     // get screen center and screen size
     CGPoint screenCenter;
     CGSize screenSize;
+    
+    
 }
 
 @end

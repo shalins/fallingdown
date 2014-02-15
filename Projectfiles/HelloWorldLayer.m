@@ -34,7 +34,11 @@
         
         // Setting the scrollSpeed (background moving speed)
         scrollSpeed = [[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"];
-        [[NSUserDefaults standardUserDefaults] setInteger:150 forKey:@"scrollSpeed"];
+        [[NSUserDefaults standardUserDefaults] setInteger:250 forKey:@"scrollSpeed"];
+        
+        CCSprite *apple  = [CCSprite spriteWithFile:@"apple.png"];
+        apple.position = ccp(screenCenter.x, screenCenter.y);
+        [self addChild:apple z:3];
         
         // Run the update method
         [self scheduleUpdate];
