@@ -78,13 +78,13 @@
 
 -(void) rightButtonPushed {
 //    appleRight = TRUE;
-    id actionMove = [CCMoveTo actionWithDuration:0.2 position:ccp(apple.position.x + 12, screenCenter.y)];
+    id actionMove = [CCMoveTo actionWithDuration:0.1 position:ccp(apple.position.x + 12, screenCenter.y)];
     [apple runAction:actionMove];
 }
 
 -(void) leftButtonPushed {
 //    appleLeft = TRUE;
-    id actionMove = [CCMoveTo actionWithDuration:0.2 position:ccp(apple.position.x - 12, screenCenter.y)];
+    id actionMove = [CCMoveTo actionWithDuration:0.1 position:ccp(apple.position.x - 12, screenCenter.y)];
     [apple runAction:actionMove];
 
 }
