@@ -12,8 +12,12 @@
     // get screen center and screen size
     CGPoint screenCenter;
     CGSize screenSize;
+    
+    // backgrounds
     CCSprite *background;
-    CCSprite *background2;
+    CCSprite *bg2;
+    
+    int *scrollSpeed;
 }
 
 @end

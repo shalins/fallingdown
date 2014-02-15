@@ -7,38 +7,36 @@
 
 #import "HelloWorldLayer.h"
 
-@interface HelloWorldLayer (PrivateMethods)
-@end
-
 @implementation HelloWorldLayer
 
 -(id) init
 {
 	if ((self = [super init]))
 	{
-		glClearColor(0.1f, 0.1f, 0.3f, 1.0f);
-        
         // get screen center and screen size
         screenCenter = [CCDirector sharedDirector].screenCenter;
         screenSize = [[CCDirector sharedDirector] winSize];
-
-		// "empty" as in "minimal code & resources"
-		//adding background sprites
-        background = [CCSprite spriteWithFile:@"tracktest.png"];
-        background2 = [CCSprite spriteWithFile:@"tracktest.png"];
-        [background.texture setAliasTexParameters];
-        [background2.texture setAliasTexParameters];
         
-        //position background sprites
-        background.position = ccp(background.contentSize.height/2,background.contentSize.width/2);
-        background2.position = ccp(screenSize.width,0);
+		// defining the background files
+        background = [CCSprite spriteWithFile:@"background.png"];
+        bg2 = [CCSprite spriteWithFile:@"background.png"];
+        
+        // Setting initial position of the backgrounds
+        background.position = screenCenter;
+        bg2.position = ccp(screenCenter.x,background.position.y-background.contentSize.height);
         
         //schedule to move background sprites
         [self schedule:@selector(scroll:)];
         
         //adding them to the main layer
         [self addChild:background z:0];
-        [self addChild:background2 z:0];
+        [self addChild:bg2 z:0];
+        
+        // Setting the scrollSpeed (background moving speed)
+        scrollSpeed = [[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"];
+        [[NSUserDefaults standardUserDefaults] setInteger:150 forKey:@"scrollSpeed"];
+        
+        // Run the update method
         [self scheduleUpdate];
 	}
 
@@ -51,23 +49,16 @@
 
 -(void) scroll:(ccTime)dt
 {
-    //move 30*dt px vertically
-    if (background.position.x<background2.position.x){
-        background.position = ccp(background.position.x - 30*dt,background.contentSize.height/2);
-        background2.position = ccp(background.position.x+background.contentSize.width,background2.contentSize.height/2);
-    }else{
-        background2.position = ccp(background2.position.x- 30*dt,background2.contentSize.height/2);
-        background.position = ccp(background2.position.x+background2.contentSize.width ,background.contentSize.height/2);
-        
-    }
+    // moves the bg
+    background.position = ccp(screenCenter.x, background.position.y + [[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"]*dt);
+    bg2.position = ccp(screenCenter.x, background.position.y-background.contentSize.height);
     
-    //reset offscreen position
-    if (background.position.x <-background.contentSize.width/2)
+    // it adds the new bg's to the screen before the old bg's move off the screen
+    if (background.position.y >= screenSize.height*1.5)
     {
-        background.position = ccp(background2.position.x+background2.contentSize.width,background.contentSize.width/2);
-    }else if (background2.position.x < -background2.contentSize.width/2)
-    {
-        background2.position = ccp(background.position.x+background.contentSize.width, background2.contentSize.width/2);
+        background.position = ccp(screenCenter.x, (screenCenter.y)-(background.size.height/2));
+    } else if (bg2.position.y >= screenSize.height*1.5) {
+        bg2.position = ccp(screenCenter.x, (screenCenter.y)-(bg2.size.height/2));
     }
 }
 
