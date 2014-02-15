@@ -7,6 +7,7 @@
 
 #import "HelloWorldLayer.h"
 
+
 @implementation HelloWorldLayer
 
 -(id) init
@@ -36,7 +37,7 @@
         scrollSpeed = [[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"];
         [[NSUserDefaults standardUserDefaults] setInteger:250 forKey:@"scrollSpeed"];
         
-        CCSprite *apple  = [CCSprite spriteWithFile:@"apple.png"];
+        apple  = [CCSprite spriteWithFile:@"apple.png"];
         apple.position = ccp(screenCenter.x, screenCenter.y);
         [self addChild:apple z:3];
         
@@ -50,6 +51,30 @@
 -(void) update:(ccTime)delta
 {
 }
+
+//-(void) accelerometer:(UIAccelerometer *)accelerometer
+//        didAccelerate:(UIAcceleration *)acceleration
+//{
+//	// controls how quickly velocity decelerates (lower = quicker to change direction)
+//	float deceleration = 0.2f;
+//	// determines how sensitive the accelerometer reacts (higher = more sensitive)
+//	float sensitivity = 300.0f;
+//	// how fast the velocity can be at most
+//	float maxVelocity = 500;
+//	// adjust velocity based on current accelerometer acceleration
+//	float velocityX = apple.velocity.x * deceleration + acceleration.y * sensitivity;
+//	// we must limit the maximum velocity of the player sprite, in both directions
+//	if (apple.velocity.x > maxVelocity) {
+//		velocityX = maxVelocity;
+//	}
+//	else if (apple.velocity.x < - maxVelocity) {
+//		velocityX = - maxVelocity;
+//	}
+//    
+//    apple.velocity = ccp(velocityX, apple.velocity.y);
+//}
+
+
 
 -(void) scroll:(ccTime)dt
 {

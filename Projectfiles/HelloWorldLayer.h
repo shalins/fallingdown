@@ -6,6 +6,7 @@
  */
 
 #import "kobold2d.h"
+#import "Apple.h"
 
 @interface HelloWorldLayer : CCLayer
 {
@@ -18,6 +19,11 @@
     CCSprite *bg2;
     
     int *scrollSpeed;
+    
+    Apple *apple;
+    
 }
+
+@property (nonatomic, assign) CGPoint velocity;
 
 @end
