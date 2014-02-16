@@ -7,6 +7,12 @@
 
 #import "HelloWorldLayer.h"
 
+static const CGFloat firstBranchPosition = 280.f;
+static const CGFloat distanceBetweenBranches = 160.f;
+
+typedef NS_ENUM(NSInteger, DrawingOrder) {
+    DrawingOrderPipes,
+};
 
 @implementation HelloWorldLayer
 
@@ -64,17 +70,7 @@
 	return self;
 }
 
--(void) update:(ccTime)delta
-{
-    if (appleRight == TRUE) {
-        apple.position = ccp(apple.position.x + 1*delta, screenCenter.y);
-//        appleRight = FALSE;
-    } else if (appleLeft== TRUE) {
-        apple.position = ccp(apple.position.x - 1*delta, screenCenter.y);
-//        appleLeft = FALSE;
-    }
-    
-}
+#pragma mark - Game Actions
 
 -(void) rightButtonPushed {
 //    appleRight = TRUE;
@@ -88,6 +84,25 @@
     [apple runAction:actionMove];
 
 }
+
+#pragma mark - Obstacle Spawning
+
+- (void)spawnNewObstacle {
+    CCNode *previousObstacle = [_branches lastObject];
+    CGFloat previousObstacleXPosition = previousObstacle.position.x;
+    
+    if (!previousObstacle) {
+        // this is the first obstacle
+        previousObstacleXPosition = firstBranchPosition;
+    }
+    
+    Branch *branch = [CCSprite spriteWithFile:@"balh.png"];
+    branch.position = ccp(previousObstacleXPosition + distanceBetweenBranches, 0);
+    [branch setupRandomPosition];
+    branch.zOrder = DrawingOrderPipes;
+    [_branches addObject:branch];
+}
+
 
 
 //-(void) accelerometer:(UIAccelerometer *)accelerometer
@@ -112,6 +127,7 @@
 //    apple.velocity = ccp(velocityX, apple.velocity.y);
 //}
 
+#pragma mark - Scrolling Backgrounds
 
 -(void) scroll:(ccTime)dt
 {
@@ -127,5 +143,20 @@
         bg2.position = ccp(screenCenter.x, (screenCenter.y)-(bg2.size.height/2));
     }
 }
+
+#pragma mark - Update
+
+-(void) update:(ccTime)delta
+{
+    if (appleRight == TRUE) {
+        apple.position = ccp(apple.position.x + 1*delta, screenCenter.y);
+        //        appleRight = FALSE;
+    } else if (appleLeft== TRUE) {
+        apple.position = ccp(apple.position.x - 1*delta, screenCenter.y);
+        //        appleLeft = FALSE;
+    }
+    
+}
+
 
 @end

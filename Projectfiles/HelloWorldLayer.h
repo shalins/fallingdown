@@ -7,6 +7,7 @@
 
 #import "kobold2d.h"
 #import "Apple.h"
+#import "Branch.h"
 
 @interface HelloWorldLayer : CCLayer
 {
@@ -25,6 +26,7 @@
     BOOL appleRight;
     BOOL appleLeft;
     
+    NSMutableArray *_branches;
 }
 
 @property (nonatomic, assign) CGPoint velocity;

@@ -10,4 +10,6 @@
 
 @interface Branch : CCNode
 
+- (void)setupRandomPosition;
+
 @end
