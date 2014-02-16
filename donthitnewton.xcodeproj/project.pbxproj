@@ -19,6 +19,12 @@
 		7055C82918AF643D006C287A /* apple-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7055C82718AF643D006C287A /* apple-hd.png */; };
 		7055C82C18AF671B006C287A /* Apple.m in Sources */ = {isa = PBXBuildFile; fileRef = 7055C82B18AF671B006C287A /* Apple.m */; };
 		709DBFFF18B051F500FE1A68 /* Branch.m in Sources */ = {isa = PBXBuildFile; fileRef = 709DBFFE18B051F500FE1A68 /* Branch.m */; };
+		709DC00118B05F4500FE1A68 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709DC00018B05F4500FE1A68 /* QuartzCore.framework */; };
+		709DC00318B05F5300FE1A68 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709DC00218B05F5300FE1A68 /* AVFoundation.framework */; };
+		709DC00518B05F5800FE1A68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709DC00418B05F5800FE1A68 /* UIKit.framework */; };
+		709DC00718B05F6200FE1A68 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709DC00618B05F6200FE1A68 /* CoreGraphics.framework */; };
+		709DC00918B05F6A00FE1A68 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709DC00818B05F6A00FE1A68 /* CoreText.framework */; };
+		709DC00B18B05F7600FE1A68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709DC00A18B05F7600FE1A68 /* Foundation.framework */; };
 		DC21B88B1511078F00FD4891 /* fps_images-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B8881511078F00FD4891 /* fps_images-hd.png */; };
 		DC21B88C1511078F00FD4891 /* fps_images-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B8891511078F00FD4891 /* fps_images-ipadhd.png */; };
 		DC21B88D1511078F00FD4891 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = DC21B88A1511078F00FD4891 /* fps_images.png */; };
@@ -78,6 +84,12 @@
 		7055C82B18AF671B006C287A /* Apple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Apple.m; sourceTree = "<group>"; };
 		709DBFFD18B051F500FE1A68 /* Branch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Branch.h; sourceTree = "<group>"; };
 		709DBFFE18B051F500FE1A68 /* Branch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Branch.m; sourceTree = "<group>"; };
+		709DC00018B05F4500FE1A68 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		709DC00218B05F5300FE1A68 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		709DC00418B05F5800FE1A68 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		709DC00618B05F6200FE1A68 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		709DC00818B05F6A00FE1A68 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
+		709DC00A18B05F7600FE1A68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DC21B8881511078F00FD4891 /* fps_images-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-hd.png"; sourceTree = "<group>"; };
 		DC21B8891511078F00FD4891 /* fps_images-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-ipadhd.png"; sourceTree = "<group>"; };
 		DC21B88A1511078F00FD4891 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
@@ -136,6 +148,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				709DC00B18B05F7600FE1A68 /* Foundation.framework in Frameworks */,
+				709DC00918B05F6A00FE1A68 /* CoreText.framework in Frameworks */,
+				709DC00718B05F6200FE1A68 /* CoreGraphics.framework in Frameworks */,
+				709DC00518B05F5800FE1A68 /* UIKit.framework in Frameworks */,
+				709DC00318B05F5300FE1A68 /* AVFoundation.framework in Frameworks */,
+				709DC00118B05F4500FE1A68 /* QuartzCore.framework in Frameworks */,
 				DC65615C13A969B600A7AC53 /* libbox2d-ios.a in Frameworks */,
 				DC65615D13A969B600A7AC53 /* libchipmunk-ios.a in Frameworks */,
 				DC65615E13A969B600A7AC53 /* libchipmunk-spacemanager-ios.a in Frameworks */,
@@ -190,6 +208,12 @@
 		DCC1A0E613A94ED5005BD75D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				709DC00A18B05F7600FE1A68 /* Foundation.framework */,
+				709DC00818B05F6A00FE1A68 /* CoreText.framework */,
+				709DC00618B05F6200FE1A68 /* CoreGraphics.framework */,
+				709DC00418B05F5800FE1A68 /* UIKit.framework */,
+				709DC00218B05F5300FE1A68 /* AVFoundation.framework */,
+				709DC00018B05F4500FE1A68 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

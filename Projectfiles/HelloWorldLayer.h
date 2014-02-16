@@ -9,7 +9,7 @@
 #import "Apple.h"
 #import "Branch.h"
 
-@interface HelloWorldLayer : CCLayer
+@interface HelloWorldLayer : CCLayer <CCPhysicsCollisionDelegate>
 {
     // get screen center and screen size
     CGPoint screenCenter;

@@ -14,7 +14,8 @@ typedef NS_ENUM(NSInteger, DrawingOrder) {
     DrawingOrderPipes,
 };
 
-@implementation HelloWorldLayer
+@implementation HelloWorldLayer {
+}
 
 -(id) init
 {
@@ -155,6 +156,27 @@ typedef NS_ENUM(NSInteger, DrawingOrder) {
         apple.position = ccp(apple.position.x - 1*delta, screenCenter.y);
         //        appleLeft = FALSE;
     }
+    
+    NSMutableArray *offScreenObstacles = nil;
+    
+    for (CCNode *branch in _branches) {
+        CGPoint obstacleWorldPosition = [_physicsNode convertToWorldSpace:obstacle.position];
+        CGPoint obstacleScreenPosition = [self convertToNodeSpace:obstacleWorldPosition];
+        if (obstacleScreenPosition.x < -branch.contentSize.width) {
+            if (!offScreenObstacles) {
+                offScreenObstacles = [NSMutableArray array];
+            }
+            [offScreenObstacles addObject:branch];
+        }
+    }
+    
+    for (CCNode *obstacleToRemove in offScreenObstacles) {
+        [obstacleToRemove removeFromParent];
+        [_branches removeObject:obstacleToRemove];
+        // for each removed obstacle, add a new one
+        [self spawnNewObstacle];
+    }
+
     
 }
 
