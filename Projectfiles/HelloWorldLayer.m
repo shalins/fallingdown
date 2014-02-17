@@ -90,15 +90,15 @@ typedef NS_ENUM(NSInteger, DrawingOrder) {
 
 - (void)spawnNewObstacle {
     CCNode *previousObstacle = [_branches lastObject];
-    CGFloat previousObstacleXPosition = previousObstacle.position.x;
+    CGFloat previousObstacleYPosition = previousObstacle.position.y;
     
     if (!previousObstacle) {
         // this is the first obstacle
-        previousObstacleXPosition = firstBranchPosition;
+        previousObstacleYPosition = firstBranchPosition;
     }
     
-    Branch *branch = [CCSprite spriteWithFile:@"balh.png"];
-    branch.position = ccp(previousObstacleXPosition + distanceBetweenBranches, 0);
+    Branch *branch = [CCSprite spriteWithFile:@"branch.png"];
+    branch.position = ccp(0, previousObstacleYPosition + distanceBetweenBranches);
     [branch setupRandomPosition];
     branch.zOrder = DrawingOrderPipes;
     [_branches addObject:branch];
@@ -159,16 +159,6 @@ typedef NS_ENUM(NSInteger, DrawingOrder) {
     
     NSMutableArray *offScreenObstacles = nil;
     
-    for (CCNode *branch in _branches) {
-        CGPoint obstacleWorldPosition = [_physicsNode convertToWorldSpace:obstacle.position];
-        CGPoint obstacleScreenPosition = [self convertToNodeSpace:obstacleWorldPosition];
-        if (obstacleScreenPosition.x < -branch.contentSize.width) {
-            if (!offScreenObstacles) {
-                offScreenObstacles = [NSMutableArray array];
-            }
-            [offScreenObstacles addObject:branch];
-        }
-    }
     
     for (CCNode *obstacleToRemove in offScreenObstacles) {
         [obstacleToRemove removeFromParent];
