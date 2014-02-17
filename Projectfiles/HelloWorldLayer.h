@@ -7,7 +7,7 @@
 
 #import "kobold2d.h"
 #import "Apple.h"
-#import "Branch.h"
+//#import "Branch.h"
 
 @interface HelloWorldLayer : CCLayer
 {
@@ -18,6 +18,8 @@
     // backgrounds
     CCSprite *background;
     CCSprite *bg2;
+    
+    CCSprite *branch;
     
     int *scrollSpeed;
     

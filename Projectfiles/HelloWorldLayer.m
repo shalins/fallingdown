@@ -51,6 +51,9 @@ typedef NS_ENUM(NSInteger, DrawingOrder) {
         appleLeft = NO;
         appleRight = NO;
         
+        branch  = [CCSprite spriteWithFile:@"branch.png"];
+        [self addChild:branch z:3];
+        
         
         CCLabelTTF *right = [CCLabelTTF labelWithString:@"Right" fontName:@"Arial" fontSize:40];
         
@@ -88,20 +91,43 @@ typedef NS_ENUM(NSInteger, DrawingOrder) {
 
 #pragma mark - Obstacle Spawning
 
-- (void)spawnNewObstacle {
-    CCNode *previousObstacle = [_branches lastObject];
-    CGFloat previousObstacleYPosition = previousObstacle.position.y;
-    
-    if (!previousObstacle) {
-        // this is the first obstacle
-        previousObstacleYPosition = firstBranchPosition;
+//- (void)spawnNewObstacle {
+//    CCNode *previousObstacle = [_branches lastObject];
+//    CGFloat previousObstacleYPosition = previousObstacle.position.y;
+//    
+//    if (!previousObstacle) {
+//        // this is the first obstacle
+//        previousObstacleYPosition = firstBranchPosition;
+//    }
+//    
+//    Branch *branch = [CCSprite spriteWithFile:@"branch.png"];
+//    branch.position = ccp(0, previousObstacleYPosition + distanceBetweenBranches);
+//    [branch setupRandomPosition];
+//    branch.zOrder = DrawingOrderPipes;
+//    [_branches addObject:branch];
+//}
+
+-(void) setLeftBranchInitialPosition {
+    int originalY = (screenCenter.y/10) - 500;
+    for(int i = 0; i < 2; i++)
+    {
+        CCSprite *coinHorizontal = [CCSprite spriteWithFile:@"coin.png"];
+        coinHorizontal.position = ccp(originalX, screenCenter.y - 20);
+        originalX += 20;
+        
+        [self addChild:coinHorizontal];
+        [coinArray addObject:coinHorizontal];
     }
+
+    CCSprite *branchLeft = [CCSprite spriteWithFile:@"branch.png"];
+    int randomLeftPosition = arc4random_uniform(20)-20;
+    // Position the X value randomly from -20 to 0. The Y position will change based on the scrollSpeed
+    branchLeft.position = ccp(randomLeftPosition, originalY);
     
-    Branch *branch = [CCSprite spriteWithFile:@"branch.png"];
-    branch.position = ccp(0, previousObstacleYPosition + distanceBetweenBranches);
-    [branch setupRandomPosition];
-    branch.zOrder = DrawingOrderPipes;
-    [_branches addObject:branch];
+    CCSprite *branchRight = [CCSprite spriteWithFile:@"branch.png"];
+    int randomRightPosition = arc4random_uniform(screenCenter.x*1.5)+500;
+    
+    [self addChild:branchLeft];
 }
 
 
@@ -157,15 +183,15 @@ typedef NS_ENUM(NSInteger, DrawingOrder) {
         //        appleLeft = FALSE;
     }
     
-    NSMutableArray *offScreenObstacles = nil;
-    
-    
-    for (CCNode *obstacleToRemove in offScreenObstacles) {
-        [obstacleToRemove removeFromParent];
-        [_branches removeObject:obstacleToRemove];
-        // for each removed obstacle, add a new one
-        [self spawnNewObstacle];
-    }
+//    NSMutableArray *offScreenObstacles = nil;
+//    
+//    
+//    for (CCNode *obstacleToRemove in offScreenObstacles) {
+//        [obstacleToRemove removeFromParent];
+//        [_branches removeObject:obstacleToRemove];
+//        // for each removed obstacle, add a new one
+//        [self spawnNewObstacle];
+//    }
 
     
 }
