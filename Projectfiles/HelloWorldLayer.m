@@ -7,15 +7,25 @@
 
 #import "HelloWorldLayer.h"
 
-static const CGFloat firstBranchPosition = 280.f;
-static const CGFloat distanceBetweenBranches = 160.f;
-
-typedef NS_ENUM(NSInteger, DrawingOrder) {
-    DrawingOrderPipes,
-};
+static const CGFloat firstBranchPosition = 426.f;
+static const CGFloat distanceBetweenBranches = 140.f;
 
 @implementation HelloWorldLayer {
+    CCNode *_leftBranch;
+    CCNode *_rightBranch;
 }
+
+#define ARC4RANDOM_MAX      0x100000000
+
+// visibility on a 3,5-inch iPhone ends a 88 points and we want some meat
+static const CGFloat minimumXPositionRightBranch = 280.f;
+// visibility ends at 320 and we want some meat
+static const CGFloat maximumXPositionLeftBranch = 50.f;
+// distance between top and bottom pipe
+static const CGFloat pipeDistance = 100.f;
+// we are getting the max position of the left branch and saying that the max position of the right branch can only be pipDistance away from the left branch
+static const CGFloat maximumXPositionRightBranch = maximumXPositionLeftBranch - pipeDistance;
+
 
 -(id) init
 {
@@ -107,27 +117,61 @@ typedef NS_ENUM(NSInteger, DrawingOrder) {
 //    [_branches addObject:branch];
 //}
 
--(void) setLeftBranchInitialPosition {
-    int originalY = (screenCenter.y/10) - 500;
-    for(int i = 0; i < 2; i++)
-    {
-        CCSprite *coinHorizontal = [CCSprite spriteWithFile:@"coin.png"];
-        coinHorizontal.position = ccp(originalX, screenCenter.y - 20);
-        originalX += 20;
-        
-        [self addChild:coinHorizontal];
-        [coinArray addObject:coinHorizontal];
-    }
+-(void) setBranchInitialPosition {
+//    int originalY = (screenCenter.y/10) - 500;
+//    for(int i = 0; i < 2; i++)
+//    {
+//        CCSprite *coinHorizontal = [CCSprite spriteWithFile:@"coin.png"];
+//        coinHorizontal.position = ccp(originalX, screenCenter.y - 20);
+//        originalX += 20;
+//        
+//        [self addChild:coinHorizontal];
+//        [coinArray addObject:coinHorizontal];
+//    }
 
-    CCSprite *branchLeft = [CCSprite spriteWithFile:@"branch.png"];
-    int randomLeftPosition = arc4random_uniform(20)-20;
-    // Position the X value randomly from -20 to 0. The Y position will change based on the scrollSpeed
-    branchLeft.position = ccp(randomLeftPosition, originalY);
+//    CCSprite *branchLeft = [CCSprite spriteWithFile:@"branch.png"];
+//    int randomLeftPosition = arc4random_uniform(20)-20;
+//    // Position the X value randomly from -20 to 0. The Y position will change based on the scrollSpeed
+//    branchLeft.position = ccp(randomLeftPosition, originalY);
     
-    CCSprite *branchRight = [CCSprite spriteWithFile:@"branch.png"];
-    int randomRightPosition = arc4random_uniform(screenCenter.x*1.5)+500;
+//    _leftBranch = [CCSprite spriteWithFile:@"hasd.png"];
     
-    [self addChild:branchLeft];
+    CGFloat random = ((double)arc4random() / ARC4RANDOM_MAX);
+    CGFloat range = maximumXPositionRightBranch - minimumXPositionRightBranch;
+    
+    _rightBranch.position = ccp(minimumXPositionRightBranch + (random * range), _rightBranch.position.y);
+    _leftBranch.position = ccp(_rightBranch.position.x + pipeDistance, _leftBranch.position.y);
+
+
+    
+//    int randomLeftPosition = arc4random_uniform(20)-20;
+//    
+//    CCSprite *branchRight = [CCSprite spriteWithFile:@"branch.png"];
+//    int randomRightPosition = arc4random_uniform(screenCenter.x*1.5)+500;
+//    
+//    [self addChild:branchLeft];
+}
+
+- (void)spawnNewBranches {
+    CCNode *previousBranch = [_branches lastObject];
+    CGFloat previousBranchYPosition = previousBranch.position.y;
+    
+    if (!previousBranch) {
+        // this is the first obstacle
+        previousBranchYPosition = firstBranchPosition;
+    }
+    
+    _rightBranch = [CCSprite spriteWithFile:@"branch.png"];
+    _leftBranch = [CCSprite spriteWithFile:@"branch.png"];
+    [_leftBranch addChild:_rightBranch];
+    [self setBranchInitialPosition];
+    
+    CCSprite *obstacle = [CCSprite node];
+    [obstacle addChild:_leftBranch];
+    
+    
+    obstacle.position = ccp(0, previousBranchYPosition + distanceBetweenBranches);
+    [_branches addObject:obstacle];
 }
 
 
