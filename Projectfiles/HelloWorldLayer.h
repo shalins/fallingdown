@@ -29,6 +29,9 @@
     BOOL appleLeft;
     
     NSMutableArray *_branches;
+    CCSprite *obstacle;
+    CCNode *previousBranch;
+    CGFloat previousBranchYPosition;
 }
 
 @property (nonatomic, assign) CGPoint velocity;

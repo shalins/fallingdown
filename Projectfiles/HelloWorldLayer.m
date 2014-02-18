@@ -153,8 +153,8 @@ static const CGFloat maximumXPositionRightBranch = maximumXPositionLeftBranch - 
 }
 
 - (void)spawnNewBranches {
-    CCNode *previousBranch = [_branches lastObject];
-    CGFloat previousBranchYPosition = previousBranch.position.y;
+    previousBranch = [_branches lastObject];
+    previousBranchYPosition = previousBranch.position.y;
     
     if (!previousBranch) {
         // this is the first obstacle
@@ -166,11 +166,12 @@ static const CGFloat maximumXPositionRightBranch = maximumXPositionLeftBranch - 
     [_leftBranch addChild:_rightBranch];
     [self setBranchInitialPosition];
     
-    CCSprite *obstacle = [CCSprite node];
+    obstacle = [CCSprite node];
     [obstacle addChild:_leftBranch];
     
     
-    obstacle.position = ccp(0, previousBranchYPosition + distanceBetweenBranches);
+    obstacle.position = ccp(160, previousBranchYPosition + distanceBetweenBranches);
+    [self addChild:obstacle];
     [_branches addObject:obstacle];
 }
 
@@ -213,6 +214,40 @@ static const CGFloat maximumXPositionRightBranch = maximumXPositionLeftBranch - 
     } else if (bg2.position.y >= screenSize.height*1.5) {
         bg2.position = ccp(screenCenter.x, (screenCenter.y)-(bg2.size.height/2));
     }
+    
+    NSMutableArray *offScreenObstacles = nil;
+    for (CCNode *obstacall in _branches) {
+        obstacall.position = ccp(obstacle.position.x, obstacle.position.y*[[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"]*dt);
+        if (obstacle.position.y >= screenSize.height*1.5) {
+            [offScreenObstacles addObject:obstacall];
+        }
+    }
+    for (CCNode *obstacleToRemove in offScreenObstacles) {
+        [obstacleToRemove removeFromParent];
+        [_branches removeObject:obstacleToRemove];
+        // for each removed obstacle, add a new one
+        [self spawnNewBranches];
+    }
+    
+//    
+//    for (CCNode *obstacle in _obstacles) {
+//        CGPoint obstacleWorldPosition = [_physicsNode convertToWorldSpace:obstacle.position];
+//        CGPoint obstacleScreenPosition = [self convertToNodeSpace:obstacleWorldPosition];
+//        if (obstacleScreenPosition.x < -obstacle.contentSize.width) {
+//            if (!offScreenObstacles) {
+//                offScreenObstacles = [NSMutableArray array];
+//            }
+//            [offScreenObstacles addObject:obstacle];
+//        }
+//    }
+//    
+//    for (CCNode *obstacleToRemove in offScreenObstacles) {
+//        [obstacleToRemove removeFromParent];
+//        [_obstacles removeObject:obstacleToRemove];
+//        // for each removed obstacle, add a new one
+//        [self spawnNewObstacle];
+//    }
+    
 }
 
 #pragma mark - Update
