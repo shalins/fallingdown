@@ -15,16 +15,8 @@ static const CGFloat distanceBetweenBranches = 140.f;
     CCNode *_rightBranch;
 }
 
-#define ARC4RANDOM_MAX      0x100000000
 
-// visibility on a 3,5-inch iPhone ends a 88 points and we want some meat
-static const CGFloat minimumXPositionRightBranch = 280.f;
-// visibility ends at 320 and we want some meat
-static const CGFloat maximumXPositionLeftBranch = 50.f;
-// distance between top and bottom pipe
-static const CGFloat pipeDistance = 100.f;
-// we are getting the max position of the left branch and saying that the max position of the right branch can only be pipDistance away from the left branch
-static const CGFloat maximumXPositionRightBranch = maximumXPositionLeftBranch - pipeDistance;
+static const CGFloat pipeDistance = 120.f;
 
 
 -(id) init
@@ -56,17 +48,12 @@ static const CGFloat maximumXPositionRightBranch = maximumXPositionLeftBranch - 
         
         apple  = [CCSprite spriteWithFile:@"apple.png"];
         apple.position = ccp(screenCenter.x, screenCenter.y);
-        [self addChild:apple z:3];
+        [self addChild:apple z:4];
         
         appleLeft = NO;
         appleRight = NO;
         
-        branch  = [CCSprite spriteWithFile:@"branch.png"];
-        [self addChild:branch z:3];
-        
-        
         CCLabelTTF *right = [CCLabelTTF labelWithString:@"Right" fontName:@"Arial" fontSize:40];
-        
         CCLabelTTF *left = [CCLabelTTF labelWithString:@"Left" fontName:@"Arial" fontSize:40];
         
         CCMenuItemLabel *starMenuItem = [CCMenuItemLabel itemWithLabel:right target:self selector:@selector(rightButtonPushed)];
@@ -79,6 +66,7 @@ static const CGFloat maximumXPositionRightBranch = maximumXPositionLeftBranch - 
         
         // Run the update method
         [self scheduleUpdate];
+        [self spawnNewBranches];
 	}
 
 	return self;
@@ -101,81 +89,23 @@ static const CGFloat maximumXPositionRightBranch = maximumXPositionLeftBranch - 
 
 #pragma mark - Obstacle Spawning
 
-//- (void)spawnNewObstacle {
-//    CCNode *previousObstacle = [_branches lastObject];
-//    CGFloat previousObstacleYPosition = previousObstacle.position.y;
-//    
-//    if (!previousObstacle) {
-//        // this is the first obstacle
-//        previousObstacleYPosition = firstBranchPosition;
-//    }
-//    
-//    Branch *branch = [CCSprite spriteWithFile:@"branch.png"];
-//    branch.position = ccp(0, previousObstacleYPosition + distanceBetweenBranches);
-//    [branch setupRandomPosition];
-//    branch.zOrder = DrawingOrderPipes;
-//    [_branches addObject:branch];
-//}
-
--(void) setBranchInitialPosition {
-//    int originalY = (screenCenter.y/10) - 500;
-//    for(int i = 0; i < 2; i++)
-//    {
-//        CCSprite *coinHorizontal = [CCSprite spriteWithFile:@"coin.png"];
-//        coinHorizontal.position = ccp(originalX, screenCenter.y - 20);
-//        originalX += 20;
-//        
-//        [self addChild:coinHorizontal];
-//        [coinArray addObject:coinHorizontal];
-//    }
-
-//    CCSprite *branchLeft = [CCSprite spriteWithFile:@"branch.png"];
-//    int randomLeftPosition = arc4random_uniform(20)-20;
-//    // Position the X value randomly from -20 to 0. The Y position will change based on the scrollSpeed
-//    branchLeft.position = ccp(randomLeftPosition, originalY);
-    
-//    _leftBranch = [CCSprite spriteWithFile:@"hasd.png"];
-    
-    CGFloat random = ((double)arc4random() / ARC4RANDOM_MAX);
-    CGFloat range = maximumXPositionRightBranch - minimumXPositionRightBranch;
-    
-    _rightBranch.position = ccp(minimumXPositionRightBranch + (random * range), _rightBranch.position.y);
-    _leftBranch.position = ccp(_rightBranch.position.x + pipeDistance, _leftBranch.position.y);
-
-
-    
-//    int randomLeftPosition = arc4random_uniform(20)-20;
-//    
-//    CCSprite *branchRight = [CCSprite spriteWithFile:@"branch.png"];
-//    int randomRightPosition = arc4random_uniform(screenCenter.x*1.5)+500;
-//    
-//    [self addChild:branchLeft];
-}
-
 - (void)spawnNewBranches {
-    previousBranch = [_branches lastObject];
-    previousBranchYPosition = previousBranch.position.y;
     
-    if (!previousBranch) {
-        // this is the first obstacle
-        previousBranchYPosition = firstBranchPosition;
-    }
+    int fromNumber = 220;
+    int toNumber = 400;
+    int randomNumber = (arc4random()%(toNumber-fromNumber))+fromNumber;
     
-    _rightBranch = [CCSprite spriteWithFile:@"branch.png"];
+    int toNumberForLeft = -40;
+    
     _leftBranch = [CCSprite spriteWithFile:@"branch.png"];
-    [_leftBranch addChild:_rightBranch];
-    [self setBranchInitialPosition];
+    _rightBranch = [CCSprite spriteWithFile:@"branch.png"];
     
-    obstacle = [CCSprite node];
-    [obstacle addChild:_leftBranch];
+    _rightBranch.position = ccp(randomNumber, (screenCenter.y/30)-50);
+    _leftBranch.position = ccp((toNumberForLeft * 1.5) + ((_rightBranch.position.x/2)-pipeDistance), _rightBranch.position.y);
     
-    
-    obstacle.position = ccp(160, previousBranchYPosition + distanceBetweenBranches);
-    [self addChild:obstacle];
-    [_branches addObject:obstacle];
+    [self addChild:_rightBranch z:3];
+    [self addChild:_leftBranch z:3];
 }
-
-
 
 //-(void) accelerometer:(UIAccelerometer *)accelerometer
 //        didAccelerate:(UIAcceleration *)acceleration
@@ -215,39 +145,17 @@ static const CGFloat maximumXPositionRightBranch = maximumXPositionLeftBranch - 
         bg2.position = ccp(screenCenter.x, (screenCenter.y)-(bg2.size.height/2));
     }
     
-    NSMutableArray *offScreenObstacles = nil;
-    for (CCNode *obstacall in _branches) {
-        obstacall.position = ccp(obstacle.position.x, obstacle.position.y*[[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"]*dt);
-        if (obstacle.position.y >= screenSize.height*1.5) {
-            [offScreenObstacles addObject:obstacall];
-        }
-    }
-    for (CCNode *obstacleToRemove in offScreenObstacles) {
-        [obstacleToRemove removeFromParent];
-        [_branches removeObject:obstacleToRemove];
-        // for each removed obstacle, add a new one
+    // moves the branches
+    _rightBranch.position = ccp(_rightBranch.position.x, _rightBranch.position.y + (300*dt));
+    _leftBranch.position = ccp(_leftBranch.position.x, _rightBranch.position.y);
+    
+    if (_rightBranch.position.y >= screenSize.height+10)
+    {
+            [self removeChild:_leftBranch cleanup:YES];
+            [self removeChild:_rightBranch cleanup:YES];
+
         [self spawnNewBranches];
     }
-    
-//    
-//    for (CCNode *obstacle in _obstacles) {
-//        CGPoint obstacleWorldPosition = [_physicsNode convertToWorldSpace:obstacle.position];
-//        CGPoint obstacleScreenPosition = [self convertToNodeSpace:obstacleWorldPosition];
-//        if (obstacleScreenPosition.x < -obstacle.contentSize.width) {
-//            if (!offScreenObstacles) {
-//                offScreenObstacles = [NSMutableArray array];
-//            }
-//            [offScreenObstacles addObject:obstacle];
-//        }
-//    }
-//    
-//    for (CCNode *obstacleToRemove in offScreenObstacles) {
-//        [obstacleToRemove removeFromParent];
-//        [_obstacles removeObject:obstacleToRemove];
-//        // for each removed obstacle, add a new one
-//        [self spawnNewObstacle];
-//    }
-    
 }
 
 #pragma mark - Update
@@ -261,17 +169,6 @@ static const CGFloat maximumXPositionRightBranch = maximumXPositionLeftBranch - 
         apple.position = ccp(apple.position.x - 1*delta, screenCenter.y);
         //        appleLeft = FALSE;
     }
-    
-//    NSMutableArray *offScreenObstacles = nil;
-//    
-//    
-//    for (CCNode *obstacleToRemove in offScreenObstacles) {
-//        [obstacleToRemove removeFromParent];
-//        [_branches removeObject:obstacleToRemove];
-//        // for each removed obstacle, add a new one
-//        [self spawnNewObstacle];
-//    }
-
     
 }
 

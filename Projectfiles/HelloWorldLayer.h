@@ -19,7 +19,6 @@
     CCSprite *background;
     CCSprite *bg2;
     
-    CCSprite *branch;
     
     int *scrollSpeed;
     
@@ -28,10 +27,13 @@
     BOOL appleRight;
     BOOL appleLeft;
     
+    CCSprite *branch;
     NSMutableArray *_branches;
     CCSprite *obstacle;
     CCNode *previousBranch;
     CGFloat previousBranchYPosition;
+    NSMutableArray *pipes;
+
 }
 
 @property (nonatomic, assign) CGPoint velocity;
