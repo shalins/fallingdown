@@ -23,16 +23,17 @@
         gameoverbg.position = ccp(screenCenter.x,screenCenter.y);
         [self addChild:gameoverbg];
         
-        CCLabelTTF *over = [CCLabelTTF labelWithString:@"GAME \n OVER" fontName:@"Pixelated" fontSize:80];
-//        CCLabelTTF *home = [CCLabelTTF labelWithString:@"Home" fontName:@"Pixelated" fontSize:40];
+        CCLabelTTF *over = [CCLabelTTF labelWithString:@"GAME OVER" fontName:@"Pixelated" fontSize:70];
         over.color = ccc3(56, 56, 56);
-//        home.color = ccc3(56, 56, 56);
   
-        CCMenuItemLabel *gameover = [CCMenuItemLabel itemWithLabel:over target:self selector:@selector(restart)];
+        CCMenuItemLabel *gameover = [CCMenuItemLabel itemWithLabel:over];
         menu2 = [CCMenu menuWithItems:gameover, nil];
         menu2.position = ccp(screenCenter.x,screenCenter.y * 1.5);
         [self addChild:menu2];
         menu2.visible = FALSE;
+        
+        CCLabelTTF *score = [CCLabelTTF labelWithString:@"SCORE" fontName:@"Pixelated" fontSize:70];
+        score.color = ccc3(56, 56, 56);
 
         
         CCMenuItemImage *replay = [CCMenuItemImage itemWithNormalImage:@"restart.png" selectedImage:@"restart-sel.png" target:self selector:@selector(restart)];
@@ -70,7 +71,7 @@
 
 
 -(void) home {
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFadeBL transitionWithDuration:0.5f scene:[HelloWorldLayer node]]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFadeBL transitionWithDuration:0.5f scene:[Title node]]];
 }
 
 -(void) restart {

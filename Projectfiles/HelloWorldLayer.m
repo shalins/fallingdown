@@ -8,9 +8,6 @@
 #import "HelloWorldLayer.h"
 #import "GameOver.h"
 
-static const CGFloat firstBranchPosition = 426.f;
-static const CGFloat distanceBetweenBranches = 140.f;
-
 @implementation HelloWorldLayer {
     CCNode *_leftBranch;
     CCNode *_rightBranch;
