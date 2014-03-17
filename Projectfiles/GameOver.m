@@ -29,13 +29,20 @@
         CCMenuItemLabel *replay = [CCMenuItemLabel itemWithLabel:restart target:self selector:@selector(restart)];
         CCMenuItemLabel *gobackhome = [CCMenuItemLabel itemWithLabel:home target:self selector:@selector(home)];
         
-        CCMenu *menu = [CCMenu menuWithItems:replay, gobackhome, nil];
+        menu = [CCMenu menuWithItems:replay, gobackhome, nil];
         menu.position = ccp(screenCenter.x,screenCenter.y);
+        [menu alignItemsVerticallyWithPadding:4];
         [self addChild:menu];
         menu.visible = FALSE;
         
+        dispatch_time_t countdown = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC));
+        dispatch_after(countdown, dispatch_get_main_queue(), ^(void){
+            [self fadeEffect:menu];
+        });
+        
         apple  = [CCSprite spriteWithFile:@"apple.png"];
         apple.position = ccp(screenCenter.x, screenCenter.y*3);
+        apple.scale = 1.5;
         [self addChild:apple z:4];
         [self appleBounce:apple];
         
@@ -44,8 +51,8 @@
 }
 
 -(void) appleBounce:(CCSprite *) spriteToBeTheNextBigThing {
-    id dropdown = [CCMoveTo actionWithDuration:1.8f position:ccp(screenCenter.x, screenCenter.y + 40)];
-    id bounceaway = [CCMoveTo actionWithDuration:1.8f position:ccp(screenCenter.x * 2.5, screenCenter.y + 300)];
+    id dropdown = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x, screenCenter.y + 40)];
+    id bounceaway = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x * 2.5, screenCenter.y + 200)];
     [spriteToBeTheNextBigThing runAction:[CCSequence actions:dropdown, bounceaway, nil]];
 }
 
@@ -56,6 +63,15 @@
 
 -(void) restart {
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFadeBL transitionWithDuration:0.5f scene:[HelloWorldLayer node]]];
+}
+-(void) fadeEffect:(CCMenu *) spriteToBeTheNextBigThing {
+    id delay = [CCDelayTime actionWithDuration:1.25];
+    id addStuffIn = [CCCallFunc actionWithTarget:self selector:@selector(addStuffIn)];
+    id fadeIn = [CCFadeIn actionWithDuration:2.0f];
+    [spriteToBeTheNextBigThing runAction:[CCSequence actions:delay,addStuffIn,fadeIn, nil]];
+}
+-(void) addStuffIn {
+    menu.visible = TRUE;
 }
 
 @end

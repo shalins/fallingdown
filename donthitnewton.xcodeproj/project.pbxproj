@@ -92,6 +92,7 @@
 		38F9B3E118D681DA0088077F /* gameover-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gameover-hd.png"; sourceTree = "<group>"; };
 		38F9B3E218D681DA0088077F /* gameover-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gameover-iphone5hd.png"; sourceTree = "<group>"; };
 		38F9B3E318D681DA0088077F /* gameover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameover.png; sourceTree = "<group>"; };
+		38F9B3E718D6876F0088077F /* pixelated.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixelated.ttf; sourceTree = "<group>"; };
 		7051AD8D18ADC35B00FD227F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		7051AD8E18ADC35B00FD227F /* background-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-iphone5hd.png"; sourceTree = "<group>"; };
 		7051AD8F18ADC35B00FD227F /* background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-hd.png"; sourceTree = "<group>"; };
@@ -323,6 +324,7 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				38F9B3E718D6876F0088077F /* pixelated.ttf */,
 				38F9B3E118D681DA0088077F /* gameover-hd.png */,
 				38F9B3E218D681DA0088077F /* gameover-iphone5hd.png */,
 				38F9B3E318D681DA0088077F /* gameover.png */,

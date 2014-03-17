@@ -14,6 +14,7 @@
     // get screen center and screen size
     CGPoint screenCenter;
     CGSize screenSize;
+    CCMenu *menu;
     
     Apple *apple;
 }
