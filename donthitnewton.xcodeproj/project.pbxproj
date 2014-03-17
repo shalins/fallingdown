@@ -14,6 +14,9 @@
 		38F9B3DC18D67D890088077F /* gamebg-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3D918D67D890088077F /* gamebg-iphone5hd.png */; };
 		38F9B3DD18D67D890088077F /* gamebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3DA18D67D890088077F /* gamebg.png */; };
 		38F9B3E018D67F1F0088077F /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F9B3DF18D67F1F0088077F /* GameOver.m */; };
+		38F9B3E418D681DA0088077F /* gameover-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3E118D681DA0088077F /* gameover-hd.png */; };
+		38F9B3E518D681DA0088077F /* gameover-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3E218D681DA0088077F /* gameover-iphone5hd.png */; };
+		38F9B3E618D681DA0088077F /* gameover.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3E318D681DA0088077F /* gameover.png */; };
 		7051AD9018ADC35B00FD227F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7051AD8D18ADC35B00FD227F /* background.png */; };
 		7051AD9118ADC35B00FD227F /* background-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7051AD8E18ADC35B00FD227F /* background-iphone5hd.png */; };
 		7051AD9218ADC35B00FD227F /* background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7051AD8F18ADC35B00FD227F /* background-hd.png */; };
@@ -86,6 +89,9 @@
 		38F9B3DA18D67D890088077F /* gamebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamebg.png; sourceTree = "<group>"; };
 		38F9B3DE18D67F1F0088077F /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOver.h; sourceTree = "<group>"; };
 		38F9B3DF18D67F1F0088077F /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOver.m; sourceTree = "<group>"; };
+		38F9B3E118D681DA0088077F /* gameover-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gameover-hd.png"; sourceTree = "<group>"; };
+		38F9B3E218D681DA0088077F /* gameover-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gameover-iphone5hd.png"; sourceTree = "<group>"; };
+		38F9B3E318D681DA0088077F /* gameover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameover.png; sourceTree = "<group>"; };
 		7051AD8D18ADC35B00FD227F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		7051AD8E18ADC35B00FD227F /* background-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-iphone5hd.png"; sourceTree = "<group>"; };
 		7051AD8F18ADC35B00FD227F /* background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-hd.png"; sourceTree = "<group>"; };
@@ -317,6 +323,9 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				38F9B3E118D681DA0088077F /* gameover-hd.png */,
+				38F9B3E218D681DA0088077F /* gameover-iphone5hd.png */,
+				38F9B3E318D681DA0088077F /* gameover.png */,
 				38F9B3D818D67D890088077F /* gamebg-hd.png */,
 				38F9B3D918D67D890088077F /* gamebg-iphone5hd.png */,
 				38F9B3DA18D67D890088077F /* gamebg.png */,
@@ -447,6 +456,7 @@
 				7055C82418AF420C006C287A /* newton.png in Resources */,
 				38F9B3DC18D67D890088077F /* gamebg-iphone5hd.png in Resources */,
 				7055C82818AF643D006C287A /* apple.png in Resources */,
+				38F9B3E518D681DA0088077F /* gameover-iphone5hd.png in Resources */,
 				DCC1A10813A94ED5005BD75D /* Icon@2x.png in Resources */,
 				DCC1A3AF13A94F1A005BD75D /* config.lua in Resources */,
 				DC21B88B1511078F00FD4891 /* fps_images-hd.png in Resources */,
@@ -456,11 +466,13 @@
 				7051AD9018ADC35B00FD227F /* background.png in Resources */,
 				DC21B88C1511078F00FD4891 /* fps_images-ipadhd.png in Resources */,
 				DC21B88D1511078F00FD4891 /* fps_images.png in Resources */,
+				38F9B3E418D681DA0088077F /* gameover-hd.png in Resources */,
 				DC27219F160CADFF00D88944 /* Default-568h@2x.png in Resources */,
 				7051AD9218ADC35B00FD227F /* background-hd.png in Resources */,
 				7051AD9118ADC35B00FD227F /* background-iphone5hd.png in Resources */,
 				DC2721A8160CAFA600D88944 /* iTunesArtwork in Resources */,
 				38F9B3D518D67A920088077F /* title-hd.png in Resources */,
+				38F9B3E618D681DA0088077F /* gameover.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

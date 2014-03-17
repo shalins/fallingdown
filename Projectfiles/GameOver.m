@@ -19,23 +19,42 @@
         screenCenter = [CCDirector sharedDirector].screenCenter;
         screenSize = [[CCDirector sharedDirector] winSize];
         
-        CCSprite *newtonUnderTree = [CCSprite spriteWithFile:@"title.png"];
-        newtonUnderTree.position = ccp(screenCenter.x,screenCenter.y);
-        [self addChild:newtonUnderTree];
+        CCSprite *gameoverbg = [CCSprite spriteWithFile:@"gameover.png"];
+        gameoverbg.position = ccp(screenCenter.x,screenCenter.y);
+        [self addChild:gameoverbg];
         
-        CCLabelTTF *play = [CCLabelTTF labelWithString:@"Play" fontName:@"Arial" fontSize:21];
+        CCLabelTTF *restart = [CCLabelTTF labelWithString:@"Restart" fontName:@"Arial" fontSize:40];
+        CCLabelTTF *home = [CCLabelTTF labelWithString:@"Home" fontName:@"Arial" fontSize:40];
         
-        CCMenuItemLabel *startGame = [CCMenuItemLabel itemWithLabel:play target:self selector:@selector(start)];
+        CCMenuItemLabel *replay = [CCMenuItemLabel itemWithLabel:restart target:self selector:@selector(restart)];
+        CCMenuItemLabel *gobackhome = [CCMenuItemLabel itemWithLabel:home target:self selector:@selector(home)];
         
-        CCMenu *menu = [CCMenu menuWithItems:startGame, nil];
-        menu.position = ccp(screenCenter.x,screenCenter.y / 2);
+        CCMenu *menu = [CCMenu menuWithItems:replay, gobackhome, nil];
+        menu.position = ccp(screenCenter.x,screenCenter.y);
         [self addChild:menu];
+        menu.visible = FALSE;
+        
+        apple  = [CCSprite spriteWithFile:@"apple.png"];
+        apple.position = ccp(screenCenter.x, screenCenter.y*3);
+        [self addChild:apple z:4];
+        [self appleBounce:apple];
         
     }
     return self;
 }
 
--(void) start {
+-(void) appleBounce:(CCSprite *) spriteToBeTheNextBigThing {
+    id dropdown = [CCMoveTo actionWithDuration:1.8f position:ccp(screenCenter.x, screenCenter.y + 40)];
+    id bounceaway = [CCMoveTo actionWithDuration:1.8f position:ccp(screenCenter.x * 2.5, screenCenter.y + 300)];
+    [spriteToBeTheNextBigThing runAction:[CCSequence actions:dropdown, bounceaway, nil]];
+}
+
+
+-(void) home {
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFadeBL transitionWithDuration:0.5f scene:[HelloWorldLayer node]]];
+}
+
+-(void) restart {
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFadeBL transitionWithDuration:0.5f scene:[HelloWorldLayer node]]];
 }
 

@@ -6,6 +6,7 @@
  */
 
 #import "HelloWorldLayer.h"
+#import "GameOver.h"
 
 static const CGFloat firstBranchPosition = 426.f;
 static const CGFloat distanceBetweenBranches = 140.f;
@@ -173,6 +174,7 @@ static const CGFloat pipeDistance = 120.f;
 {
         if (CGRectIntersectsRect([_leftBranch boundingBox], [apple boundingBox]) == true || CGRectIntersectsRect([_rightBranch boundingBox], [apple boundingBox]) == true) {
             [self pauseSchedulerAndActions];
+            [[CCDirector sharedDirector] replaceScene:[CCTransitionSplitRows transitionWithDuration:0.5f scene:[GameOver node]]];
         }
 }
 
