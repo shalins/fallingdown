@@ -13,6 +13,7 @@
 		38F9B3DB18D67D890088077F /* gamebg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3D818D67D890088077F /* gamebg-hd.png */; };
 		38F9B3DC18D67D890088077F /* gamebg-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3D918D67D890088077F /* gamebg-iphone5hd.png */; };
 		38F9B3DD18D67D890088077F /* gamebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3DA18D67D890088077F /* gamebg.png */; };
+		38F9B3E018D67F1F0088077F /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F9B3DF18D67F1F0088077F /* GameOver.m */; };
 		7051AD9018ADC35B00FD227F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7051AD8D18ADC35B00FD227F /* background.png */; };
 		7051AD9118ADC35B00FD227F /* background-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7051AD8E18ADC35B00FD227F /* background-iphone5hd.png */; };
 		7051AD9218ADC35B00FD227F /* background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7051AD8F18ADC35B00FD227F /* background-hd.png */; };
@@ -83,6 +84,8 @@
 		38F9B3D818D67D890088077F /* gamebg-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gamebg-hd.png"; sourceTree = "<group>"; };
 		38F9B3D918D67D890088077F /* gamebg-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gamebg-iphone5hd.png"; sourceTree = "<group>"; };
 		38F9B3DA18D67D890088077F /* gamebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamebg.png; sourceTree = "<group>"; };
+		38F9B3DE18D67F1F0088077F /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOver.h; sourceTree = "<group>"; };
+		38F9B3DF18D67F1F0088077F /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOver.m; sourceTree = "<group>"; };
 		7051AD8D18ADC35B00FD227F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		7051AD8E18ADC35B00FD227F /* background-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-iphone5hd.png"; sourceTree = "<group>"; };
 		7051AD8F18ADC35B00FD227F /* background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-hd.png"; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 			children = (
 				DCC1A38F13A94F1A005BD75D /* HelloWorldLayer.h */,
 				DCC1A39013A94F1A005BD75D /* HelloWorldLayer.m */,
+				38F9B3DE18D67F1F0088077F /* GameOver.h */,
+				38F9B3DF18D67F1F0088077F /* GameOver.m */,
 				709DBFFD18B051F500FE1A68 /* Branch.h */,
 				709DBFFE18B051F500FE1A68 /* Branch.m */,
 				7055C82A18AF671B006C287A /* Apple.h */,
@@ -481,6 +486,7 @@
 				7055C82C18AF671B006C287A /* Apple.m in Sources */,
 				7051AD9818AEF0FD00FD227F /* Title.m in Sources */,
 				DCC1A3A913A94F1A005BD75D /* AppDelegate.m in Sources */,
+				38F9B3E018D67F1F0088077F /* GameOver.m in Sources */,
 				709DBFFF18B051F500FE1A68 /* Branch.m in Sources */,
 				DCC1A3AB13A94F1A005BD75D /* HelloWorldLayer.m in Sources */,
 				DCC1A3AD13A94F1A005BD75D /* main.m in Sources */,

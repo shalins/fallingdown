@@ -171,14 +171,9 @@ static const CGFloat pipeDistance = 120.f;
 
 -(void) detectCollisions
 {
-//    for(NSUInteger i = 0; i < [_branches count]; i++) {
-//        NSUInteger j = i;
-//        CCSprite* tempSprite = [_branches objectAtIndex:j];
         if (CGRectIntersectsRect([_leftBranch boundingBox], [apple boundingBox]) == true || CGRectIntersectsRect([_rightBranch boundingBox], [apple boundingBox]) == true) {
             [self pauseSchedulerAndActions];
         }
-//    }
-
 }
 
 @end
