@@ -25,8 +25,8 @@ static const CGFloat pipeDistance = 120.f;
         screenSize = [[CCDirector sharedDirector] winSize];
         
 		// defining the background files
-        background = [CCSprite spriteWithFile:@"background.png"];
-        bg2 = [CCSprite spriteWithFile:@"background.png"];
+        background = [CCSprite spriteWithFile:@"gamebg.png"];
+        bg2 = [CCSprite spriteWithFile:@"gamebg.png"];
         
         // Setting initial position of the backgrounds
         background.position = screenCenter;
@@ -41,7 +41,7 @@ static const CGFloat pipeDistance = 120.f;
         
         // Setting the scrollSpeed (background moving speed)
         scrollSpeed = [[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"];
-        [[NSUserDefaults standardUserDefaults] setInteger:250 forKey:@"scrollSpeed"];
+        [[NSUserDefaults standardUserDefaults] setInteger:150 forKey:@"scrollSpeed"];
         
         apple  = [CCSprite spriteWithFile:@"apple.png"];
         apple.position = ccp(screenCenter.x, screenCenter.y);
@@ -89,17 +89,17 @@ static const CGFloat pipeDistance = 120.f;
 {
     // moves the bg
     background.position = ccp(screenCenter.x, background.position.y + [[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"]*dt);
-    bg2.position = ccp(screenCenter.x, background.position.y-background.contentSize.height);
+    bg2.position = ccp(screenCenter.x, (background.position.y-background.contentSize.height) + 1);
     
     // it adds the new bg's to the screen before the old bg's move off the screen
     if (background.position.y >= screenSize.height*1.5) {
         background.position = ccp(screenCenter.x, (screenCenter.y)-(background.size.height/2));
     } else if (bg2.position.y >= screenSize.height*1.5) {
-        bg2.position = ccp(screenCenter.x, (screenCenter.y)-(bg2.size.height/2));
+        bg2.position = ccp(screenCenter.x, ((screenCenter.y)-(bg2.size.height/2))+1);
     }
     
     // moves the branches
-    _rightBranch.position = ccp(_rightBranch.position.x, _rightBranch.position.y + (300*dt));
+    _rightBranch.position = ccp(_rightBranch.position.x, _rightBranch.position.y + (([[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"]*2)*dt));
     _leftBranch.position = ccp(_leftBranch.position.x, _rightBranch.position.y);
     
     if (_rightBranch.position.y >= screenSize.height+10) {

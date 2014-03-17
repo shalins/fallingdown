@@ -19,8 +19,8 @@
         screenCenter = [CCDirector sharedDirector].screenCenter;
         screenSize = [[CCDirector sharedDirector] winSize];
         
-        CCSprite *newtonUnderTree = [CCSprite spriteWithFile:@"newtonundertree.png"];
-        newtonUnderTree.position = ccp(screenCenter.x,screenCenter.y - (screenCenter.y/5.5));
+        CCSprite *newtonUnderTree = [CCSprite spriteWithFile:@"title.png"];
+        newtonUnderTree.position = ccp(screenCenter.x,screenCenter.y);
         [self addChild:newtonUnderTree];
         
         CCLabelTTF *play = [CCLabelTTF labelWithString:@"Play" fontName:@"Arial" fontSize:21];
