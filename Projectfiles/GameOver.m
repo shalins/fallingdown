@@ -23,21 +23,33 @@
         gameoverbg.position = ccp(screenCenter.x,screenCenter.y);
         [self addChild:gameoverbg];
         
-        CCLabelTTF *restart = [CCLabelTTF labelWithString:@"Restart" fontName:@"Arial" fontSize:40];
-        CCLabelTTF *home = [CCLabelTTF labelWithString:@"Home" fontName:@"Arial" fontSize:40];
+        CCLabelTTF *over = [CCLabelTTF labelWithString:@"GAME \n OVER" fontName:@"Pixelated" fontSize:80];
+//        CCLabelTTF *home = [CCLabelTTF labelWithString:@"Home" fontName:@"Pixelated" fontSize:40];
+        over.color = ccc3(56, 56, 56);
+//        home.color = ccc3(56, 56, 56);
+  
+        CCMenuItemLabel *gameover = [CCMenuItemLabel itemWithLabel:over target:self selector:@selector(restart)];
+        menu2 = [CCMenu menuWithItems:gameover, nil];
+        menu2.position = ccp(screenCenter.x,screenCenter.y * 1.5);
+        [self addChild:menu2];
+        menu2.visible = FALSE;
+
         
-        CCMenuItemLabel *replay = [CCMenuItemLabel itemWithLabel:restart target:self selector:@selector(restart)];
-        CCMenuItemLabel *gobackhome = [CCMenuItemLabel itemWithLabel:home target:self selector:@selector(home)];
+        CCMenuItemImage *replay = [CCMenuItemImage itemWithNormalImage:@"restart.png" selectedImage:@"restart-sel.png" target:self selector:@selector(restart)];
+        replay.scale = 0.8;
+        CCMenuItemImage *gohome = [CCMenuItemImage itemWithNormalImage:@"home.png" selectedImage:@"home-sel.png" target:self selector:@selector(home)];
+        gohome.scale = 0.8;
         
-        menu = [CCMenu menuWithItems:replay, gobackhome, nil];
-        menu.position = ccp(screenCenter.x,screenCenter.y);
-        [menu alignItemsVerticallyWithPadding:4];
+        menu = [CCMenu menuWithItems:replay, gohome, nil];
+        menu.position = ccp(screenCenter.x,screenCenter.y / 3);
+        [menu alignItemsVerticallyWithPadding:6];
         [self addChild:menu];
         menu.visible = FALSE;
         
         dispatch_time_t countdown = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC));
         dispatch_after(countdown, dispatch_get_main_queue(), ^(void){
             [self fadeEffect:menu];
+            [self fadeEffect:menu2];
         });
         
         apple  = [CCSprite spriteWithFile:@"apple.png"];
@@ -72,6 +84,7 @@
 }
 -(void) addStuffIn {
     menu.visible = TRUE;
+    menu2.visible = TRUE;
 }
 
 @end

@@ -23,7 +23,7 @@
         newtonUnderTree.position = ccp(screenCenter.x,screenCenter.y);
         [self addChild:newtonUnderTree];
         
-        CCLabelTTF *play = [CCLabelTTF labelWithString:@"Play" fontName:@"Arial" fontSize:40];
+        CCLabelTTF *play = [CCLabelTTF labelWithString:@"Play" fontName:@"Pixelated" fontSize:50];
         
         CCMenuItemLabel *startGame = [CCMenuItemLabel itemWithLabel:play target:self selector:@selector(start)];
         
