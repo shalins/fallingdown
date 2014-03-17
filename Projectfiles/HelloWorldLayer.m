@@ -14,10 +14,7 @@ static const CGFloat distanceBetweenBranches = 140.f;
     CCNode *_leftBranch;
     CCNode *_rightBranch;
 }
-
-
 static const CGFloat pipeDistance = 120.f;
-
 
 -(id) init
 {
@@ -70,6 +67,47 @@ static const CGFloat pipeDistance = 120.f;
 	}
 
 	return self;
+}
+
+#pragma mark - Update
+
+-(void) update:(ccTime)delta
+{
+    if (appleRight == TRUE) {
+        apple.position = ccp(apple.position.x + 1*delta, screenCenter.y);
+        //        appleRight = FALSE;
+    } else if (appleLeft== TRUE) {
+        apple.position = ccp(apple.position.x - 1*delta, screenCenter.y);
+        //        appleLeft = FALSE;
+    }
+    [self detectCollisions];
+}
+
+#pragma mark - Scrolling
+
+-(void) scroll:(ccTime)dt
+{
+    // moves the bg
+    background.position = ccp(screenCenter.x, background.position.y + [[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"]*dt);
+    bg2.position = ccp(screenCenter.x, background.position.y-background.contentSize.height);
+    
+    // it adds the new bg's to the screen before the old bg's move off the screen
+    if (background.position.y >= screenSize.height*1.5) {
+        background.position = ccp(screenCenter.x, (screenCenter.y)-(background.size.height/2));
+    } else if (bg2.position.y >= screenSize.height*1.5) {
+        bg2.position = ccp(screenCenter.x, (screenCenter.y)-(bg2.size.height/2));
+    }
+    
+    // moves the branches
+    _rightBranch.position = ccp(_rightBranch.position.x, _rightBranch.position.y + (300*dt));
+    _leftBranch.position = ccp(_leftBranch.position.x, _rightBranch.position.y);
+    
+    if (_rightBranch.position.y >= screenSize.height+10) {
+        [self removeChild:_leftBranch cleanup:YES];
+        [self removeChild:_rightBranch cleanup:YES];
+        
+        [self spawnNewBranches];
+    }
 }
 
 #pragma mark - Game Actions
@@ -129,48 +167,18 @@ static const CGFloat pipeDistance = 120.f;
 //    apple.velocity = ccp(velocityX, apple.velocity.y);
 //}
 
-#pragma mark - Scrolling Backgrounds
+#pragma mark - Detect Collisions
 
--(void) scroll:(ccTime)dt
+-(void) detectCollisions
 {
-    // moves the bg
-    background.position = ccp(screenCenter.x, background.position.y + [[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"]*dt);
-    bg2.position = ccp(screenCenter.x, background.position.y-background.contentSize.height);
-    
-    // it adds the new bg's to the screen before the old bg's move off the screen
-    if (background.position.y >= screenSize.height*1.5)
-    {
-        background.position = ccp(screenCenter.x, (screenCenter.y)-(background.size.height/2));
-    } else if (bg2.position.y >= screenSize.height*1.5) {
-        bg2.position = ccp(screenCenter.x, (screenCenter.y)-(bg2.size.height/2));
-    }
-    
-    // moves the branches
-    _rightBranch.position = ccp(_rightBranch.position.x, _rightBranch.position.y + (300*dt));
-    _leftBranch.position = ccp(_leftBranch.position.x, _rightBranch.position.y);
-    
-    if (_rightBranch.position.y >= screenSize.height+10)
-    {
-            [self removeChild:_leftBranch cleanup:YES];
-            [self removeChild:_rightBranch cleanup:YES];
+//    for(NSUInteger i = 0; i < [_branches count]; i++) {
+//        NSUInteger j = i;
+//        CCSprite* tempSprite = [_branches objectAtIndex:j];
+        if (CGRectIntersectsRect([_leftBranch boundingBox], [apple boundingBox]) == true || CGRectIntersectsRect([_rightBranch boundingBox], [apple boundingBox]) == true) {
+            [self pauseSchedulerAndActions];
+        }
+//    }
 
-        [self spawnNewBranches];
-    }
 }
-
-#pragma mark - Update
-
--(void) update:(ccTime)delta
-{
-    if (appleRight == TRUE) {
-        apple.position = ccp(apple.position.x + 1*delta, screenCenter.y);
-        //        appleRight = FALSE;
-    } else if (appleLeft== TRUE) {
-        apple.position = ccp(apple.position.x - 1*delta, screenCenter.y);
-        //        appleLeft = FALSE;
-    }
-    
-}
-
 
 @end

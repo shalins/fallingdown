@@ -23,8 +23,20 @@
         newtonUnderTree.position = ccp(screenCenter.x,screenCenter.y - (screenCenter.y/5.5));
         [self addChild:newtonUnderTree];
         
+        CCLabelTTF *play = [CCLabelTTF labelWithString:@"Play" fontName:@"Arial" fontSize:21];
+        
+        CCMenuItemLabel *startGame = [CCMenuItemLabel itemWithLabel:play target:self selector:@selector(start)];
+        
+        CCMenu *menu = [CCMenu menuWithItems:startGame, nil];
+        menu.position = ccp(screenCenter.x,screenCenter.y / 2);
+        [self addChild:menu];
+
     }
     return self;
+}
+
+-(void) start {
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFadeBL transitionWithDuration:0.5f scene:[HelloWorldLayer node]]];
 }
 
 //- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
