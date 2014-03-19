@@ -24,13 +24,12 @@
         [self addChild:newtonUnderTree];
         
         CCMenuItemImage *play = [CCMenuItemImage itemWithNormalImage:@"play.png" selectedImage:@"play-sel.png" target:self selector:@selector(start)];
-        play.scale = 0.8;
+        play.scale = 1;
         
         menu = [CCMenu menuWithItems:play, nil];
         menu.position = ccp(screenCenter.x,screenCenter.y / 2);
         [menu alignItemsVerticallyWithPadding:6];
         [self addChild:menu];
-        menu.visible = FALSE;
 
     }
     return self;

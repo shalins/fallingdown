@@ -12,7 +12,7 @@
     CCNode *_leftBranch;
     CCNode *_rightBranch;
 }
-static const CGFloat pipeDistance = 160.f;
+static const CGFloat pipeDistance = 140.f;
 
 -(id) init
 {
@@ -45,20 +45,6 @@ static const CGFloat pipeDistance = 160.f;
         apple.position = ccp(screenCenter.x, screenCenter.y);
         [self addChild:apple z:4];
         
-        appleLeft = NO;
-        appleRight = NO;
-        
-        CCLabelTTF *right = [CCLabelTTF labelWithString:@"Right" fontName:@"Arial" fontSize:40];
-        CCLabelTTF *left = [CCLabelTTF labelWithString:@"Left" fontName:@"Arial" fontSize:40];
-        
-        CCMenuItemLabel *starMenuItem = [CCMenuItemLabel itemWithLabel:right target:self selector:@selector(rightButtonPushed)];
-        CCMenuItemLabel *starMenuItemTwo = [CCMenuItemLabel itemWithLabel:left target:self selector:@selector(leftButtonPushed)];
-        
-        CCMenu *starMenu = [CCMenu menuWithItems:starMenuItemTwo, starMenuItem, nil];
-        starMenu.position = ccp(screenCenter.x, screenCenter.y-200);
-        [starMenu alignItemsHorizontallyWithPadding:12];
-        [self addChild:starMenu];
-        
         // Run the update method
         [self scheduleUpdate];
 
@@ -75,13 +61,6 @@ static const CGFloat pipeDistance = 160.f;
 
 -(void) update:(ccTime)delta
 {
-    if (appleRight == TRUE) {
-        apple.position = ccp(apple.position.x + 1*delta, screenCenter.y);
-        //        appleRight = FALSE;
-    } else if (appleLeft== TRUE) {
-        apple.position = ccp(apple.position.x - 1*delta, screenCenter.y);
-        //        appleLeft = FALSE;
-    }
     [self detectCollisions];
     [self grabTouchCoord];
 }
@@ -115,17 +94,23 @@ static const CGFloat pipeDistance = 160.f;
 
 #pragma mark - Game Actions
 
--(void) rightButtonPushed {
-//    appleRight = TRUE;
-    id actionMove = [CCMoveTo actionWithDuration:0.1 position:ccp(apple.position.x + 12, screenCenter.y)];
-    [apple runAction:actionMove];
-}
-
--(void) leftButtonPushed {
-//    appleLeft = TRUE;
-    id actionMove = [CCMoveTo actionWithDuration:0.1 position:ccp(apple.position.x - 12, screenCenter.y)];
-    [apple runAction:actionMove];
-
+-(void) grabTouchCoord {
+    // Methods that should run every frame here!
+    KKInput *input = [KKInput sharedInput];
+    //This will be true as long as there is at least one finger touching the screen
+    if(input.touchesAvailable) {
+        
+        posTouchScreen = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
+        coord = posTouchScreen;
+        CGPoint newpos = posTouchScreen;
+        CGPoint oldpos = [apple position];
+        
+        if(newpos.x - oldpos.x > 5 || newpos.x - oldpos.x < -5 || newpos.y - oldpos.y > 5 || newpos.y - oldpos.y < -5) {
+            apple.position = ccp(coord.x, apple.position.y);
+            //            CCSequence *boo = [CCSequence actions:[CCMoveTo actionWithDuration:2.0f position:ccp(coord.x, apple.position.y)], nil];
+            //            [apple runAction:boo];
+        }
+    }
 }
 
 #pragma mark - Obstacle Spawning
@@ -141,32 +126,12 @@ static const CGFloat pipeDistance = 160.f;
     
     _rightBranch.position = ccp(randomNumber, (screenCenter.y/30)-50);
 //    _leftBranch.position = ccp((toNumberForLeft * 1.5) + ((_rightBranch.position.x/2)-pipeDistance), _rightBranch.position.y);
-    _leftBranch.position = ccp(((_rightBranch.position.x/2)-pipeDistance), _rightBranch.position.y);
+    _leftBranch.position = ccp(((_rightBranch.position.x/2)-(pipeDistance * 1.5)), _rightBranch.position.y);
 
     
     [self addChild:_rightBranch z:3];
     [self addChild:_leftBranch z:3];
 }
-
--(void) grabTouchCoord {
-    // Methods that should run every frame here!
-    KKInput *input = [KKInput sharedInput];
-    //This will be true as long as there is at least one finger touching the screen
-    if(input.touchesAvailable) {
-        
-        posTouchScreen = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
-        coord = posTouchScreen;
-        CGPoint newpos = posTouchScreen;
-        CGPoint oldpos = [apple position];
-        
-        if(newpos.x - oldpos.x > 5 || newpos.x - oldpos.x < -5 || newpos.y - oldpos.y > 5 || newpos.y - oldpos.y < -5) {
-            apple.position = ccp(coord.x, apple.position.y);
-//            CCSequence *boo = [CCSequence actions:[CCMoveTo actionWithDuration:2.0f position:ccp(coord.x, apple.position.y)], nil];
-//            [apple runAction:boo];
-        }
-    }
-}
-
 
 #pragma mark - Detect Collisions
 
