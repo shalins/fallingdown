@@ -54,7 +54,7 @@
         });
         
         apple  = [CCSprite spriteWithFile:@"apple.png"];
-        apple.position = ccp(screenCenter.x, screenCenter.y*3);
+        apple.position = ccp(screenCenter.x / 1.5, screenCenter.y*3);
         apple.scale = 1.5;
         [self addChild:apple z:4];
         [self appleBounce:apple];
@@ -65,7 +65,7 @@
 
 -(void) appleBounce:(CCSprite *) spriteToBeTheNextBigThing {
     id dropdown = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x, screenCenter.y + 40)];
-    id bounceaway = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x * 1.5, screenCenter.y + 200)];
+    id bounceaway = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x * 1.9, screenCenter.y * 3)];
     [spriteToBeTheNextBigThing runAction:[CCSequence actions:dropdown, bounceaway, nil]];
 }
 

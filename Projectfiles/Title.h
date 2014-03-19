@@ -14,7 +14,7 @@
     CGPoint screenCenter;
     CGSize screenSize;
     
-    
+    CCMenu *menu;
 }
 
 @end

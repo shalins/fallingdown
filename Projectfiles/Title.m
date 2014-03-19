@@ -23,13 +23,14 @@
         newtonUnderTree.position = ccp(screenCenter.x,screenCenter.y);
         [self addChild:newtonUnderTree];
         
-        CCLabelTTF *play = [CCLabelTTF labelWithString:@"Play" fontName:@"Pixelated" fontSize:50];
+        CCMenuItemImage *play = [CCMenuItemImage itemWithNormalImage:@"play.png" selectedImage:@"play-sel.png" target:self selector:@selector(start)];
+        play.scale = 0.8;
         
-        CCMenuItemLabel *startGame = [CCMenuItemLabel itemWithLabel:play target:self selector:@selector(start)];
-        
-        CCMenu *menu = [CCMenu menuWithItems:startGame, nil];
+        menu = [CCMenu menuWithItems:play, nil];
         menu.position = ccp(screenCenter.x,screenCenter.y / 2);
+        [menu alignItemsVerticallyWithPadding:6];
         [self addChild:menu];
+        menu.visible = FALSE;
 
     }
     return self;

@@ -12,7 +12,7 @@
     CCNode *_leftBranch;
     CCNode *_rightBranch;
 }
-static const CGFloat pipeDistance = 150.f;
+static const CGFloat pipeDistance = 160.f;
 
 -(id) init
 {
