@@ -33,6 +33,11 @@
     CCNode *previousBranch;
     CGFloat previousBranchYPosition;
     NSMutableArray *pipes;
+    
+    CGPoint posTouchScreen;
+    CGPoint coord;
+    CGPoint playerpos;
+
 
 }
 

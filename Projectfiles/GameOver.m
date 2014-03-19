@@ -65,7 +65,7 @@
 
 -(void) appleBounce:(CCSprite *) spriteToBeTheNextBigThing {
     id dropdown = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x, screenCenter.y + 40)];
-    id bounceaway = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x * 2.5, screenCenter.y + 200)];
+    id bounceaway = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x * 1.5, screenCenter.y + 200)];
     [spriteToBeTheNextBigThing runAction:[CCSequence actions:dropdown, bounceaway, nil]];
 }
 

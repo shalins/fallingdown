@@ -12,7 +12,7 @@
     CCNode *_leftBranch;
     CCNode *_rightBranch;
 }
-static const CGFloat pipeDistance = 120.f;
+static const CGFloat pipeDistance = 150.f;
 
 -(id) init
 {
@@ -61,7 +61,11 @@ static const CGFloat pipeDistance = 120.f;
         
         // Run the update method
         [self scheduleUpdate];
-        [self spawnNewBranches];
+
+        dispatch_time_t countdown = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC));
+        dispatch_after(countdown, dispatch_get_main_queue(), ^(void){
+            [self spawnNewBranches];
+        });
 	}
 
 	return self;
@@ -79,6 +83,7 @@ static const CGFloat pipeDistance = 120.f;
         //        appleLeft = FALSE;
     }
     [self detectCollisions];
+    [self grabTouchCoord];
 }
 
 #pragma mark - Scrolling
@@ -128,42 +133,40 @@ static const CGFloat pipeDistance = 120.f;
 - (void)spawnNewBranches {
     
     int fromNumber = 220;
-    int toNumber = 400;
+    int toNumber = 480;
     int randomNumber = (arc4random()%(toNumber-fromNumber))+fromNumber;
-    
-    int toNumberForLeft = -40;
-    
+        
     _leftBranch = [CCSprite spriteWithFile:@"branch.png"];
     _rightBranch = [CCSprite spriteWithFile:@"branch.png"];
     
     _rightBranch.position = ccp(randomNumber, (screenCenter.y/30)-50);
-    _leftBranch.position = ccp((toNumberForLeft * 1.5) + ((_rightBranch.position.x/2)-pipeDistance), _rightBranch.position.y);
+//    _leftBranch.position = ccp((toNumberForLeft * 1.5) + ((_rightBranch.position.x/2)-pipeDistance), _rightBranch.position.y);
+    _leftBranch.position = ccp(((_rightBranch.position.x/2)-pipeDistance), _rightBranch.position.y);
+
     
     [self addChild:_rightBranch z:3];
     [self addChild:_leftBranch z:3];
 }
 
-//-(void) accelerometer:(UIAccelerometer *)accelerometer
-//        didAccelerate:(UIAcceleration *)acceleration
-//{
-//	// controls how quickly velocity decelerates (lower = quicker to change direction)
-//	float deceleration = 0.2f;
-//	// determines how sensitive the accelerometer reacts (higher = more sensitive)
-//	float sensitivity = 300.0f;
-//	// how fast the velocity can be at most
-//	float maxVelocity = 500;
-//	// adjust velocity based on current accelerometer acceleration
-//	float velocityX = apple.velocity.x * deceleration + acceleration.y * sensitivity;
-//	// we must limit the maximum velocity of the player sprite, in both directions
-//	if (apple.velocity.x > maxVelocity) {
-//		velocityX = maxVelocity;
-//	}
-//	else if (apple.velocity.x < - maxVelocity) {
-//		velocityX = - maxVelocity;
-//	}
-//    
-//    apple.velocity = ccp(velocityX, apple.velocity.y);
-//}
+-(void) grabTouchCoord {
+    // Methods that should run every frame here!
+    KKInput *input = [KKInput sharedInput];
+    //This will be true as long as there is at least one finger touching the screen
+    if(input.touchesAvailable) {
+        
+        posTouchScreen = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
+        coord = posTouchScreen;
+        CGPoint newpos = posTouchScreen;
+        CGPoint oldpos = [apple position];
+        
+        if(newpos.x - oldpos.x > 5 || newpos.x - oldpos.x < -5 || newpos.y - oldpos.y > 5 || newpos.y - oldpos.y < -5) {
+            apple.position = ccp(coord.x, apple.position.y);
+//            CCSequence *boo = [CCSequence actions:[CCMoveTo actionWithDuration:2.0f position:ccp(coord.x, apple.position.y)], nil];
+//            [apple runAction:boo];
+        }
+    }
+}
+
 
 #pragma mark - Detect Collisions
 
