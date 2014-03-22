@@ -22,5 +22,7 @@
     CCLabelTTF *over;
     Apple *apple;
     CCSprite *bgtrans;
+    int endingScore;
+    int endingHighScore;
 }
 @end

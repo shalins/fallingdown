@@ -14,6 +14,7 @@
     CCNode *_rightBranch;
 }
 static const CGFloat pipeDistance = 140.f;
+//int playerHighScore = 0;
 -(id) init
 {
 	if ((self = [super init]))
@@ -25,6 +26,9 @@ static const CGFloat pipeDistance = 140.f;
 		// defining the background files
         background = [CCSprite spriteWithFile:@"gamebg.png"];
         bg2 = [CCSprite spriteWithFile:@"gamebg.png"];
+        
+        NSNumber *curHighScore = [[NSUserDefaults standardUserDefaults] objectForKey:@"sharedHighScore"];
+        playerHighScore = [curHighScore intValue]; // read from the devices memory
         
         // Setting initial position of the backgrounds
         background.position = screenCenter;
@@ -101,15 +105,10 @@ static const CGFloat pipeDistance = 140.f;
         [self spawnNewBranches];
         [self rewardPlayer];
     }
-    //
+
     if (_rightBranch.position.y >= apple.position.y) {
         [scoreDisplay setString:[NSString stringWithFormat:@"%i", score]];
-//        [self schedule:@selector(addPoint)];
-//        shouldScoreChange = YES;
     }
-//    else if (_leftBranch.position.y == screenCenter.y + 20){
-//        shouldScoreChange = NO;
-//    }
 }
 
 #pragma mark - Game Actions
@@ -127,19 +126,12 @@ static const CGFloat pipeDistance = 140.f;
         
         if(newpos.x - oldpos.x > 5 || newpos.x - oldpos.x < -5 || newpos.y - oldpos.y > 5 || newpos.y - oldpos.y < -5) {
             apple.position = ccp(coord.x, apple.position.y);
-            //            CCSequence *boo = [CCSequence actions:[CCMoveTo actionWithDuration:2.0f position:ccp(coord.x, apple.position.y)], nil];
-            //            [apple runAction:boo];
         }
     }
 }
 
 - (void)addPoint
 {
-//    if (shouldScoreChange == YES) {
-//        shouldScoreChange = NO;
-//        score += 1/50;
-//        [scoreDisplay setString:[NSString stringWithFormat:@"%i", score]];
-//    }
     if (score < targetScore) {
         int increment = ((targetScore) - score);
         if (increment < 1) {
@@ -147,7 +139,6 @@ static const CGFloat pipeDistance = 140.f;
         }
         score += increment;
     }
-
 }
 -(void) rewardPlayer
 {
@@ -166,26 +157,61 @@ static const CGFloat pipeDistance = 140.f;
     _rightBranch = [CCSprite spriteWithFile:@"branch.png"];
     
     _rightBranch.position = ccp(randomNumber, (screenCenter.y/30)-50);
-//    _leftBranch.position = ccp((toNumberForLeft * 1.5) + ((_rightBranch.position.x/2)-pipeDistance), _rightBranch.position.y);
     _leftBranch.position = ccp(((_rightBranch.position.x/2)-(pipeDistance * 1.5)), _rightBranch.position.y);
 
-    
     [self addChild:_rightBranch z:3];
     [self addChild:_leftBranch z:3];
 }
 
 #pragma mark - Detect Collisions
 
--(void) detectCollisions
-{
+-(void) detectCollisions {
         if (CGRectIntersectsRect([_leftBranch boundingBox], [apple boundingBox]) == true || CGRectIntersectsRect([_rightBranch boundingBox], [apple boundingBox]) == true) {
             [self pauseSchedulerAndActions];
             
+//            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sharedHighScore"];
+            
             // Set up the score
-            [[NSUserDefaults standardUserDefaults] setInteger:score forKey:@"theScore"];
+            sharedScore = [NSNumber numberWithInteger:score - 1];
+            [[NSUserDefaults standardUserDefaults] setObject:sharedScore forKey:@"sharedScore"];
+            
+            if (playerHighScore == 0) {
+                playerHighScore = score;
+                [[NSUserDefaults standardUserDefaults] setInteger:playerHighScore forKey:@"sharedHighScore"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            if (score > playerHighScore) {
+                playerHighScore = score;
+                [[NSUserDefaults standardUserDefaults] setInteger:playerHighScore forKey:@"sharedHighScore"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+
+//            [self gameOver];
             
             [[CCDirector sharedDirector] replaceScene:[CCTransitionSplitRows transitionWithDuration:0.5f scene:[GameOver node]]];
         }
+}
+
+-(void) gameOver {
+    [[NSUserDefaults standardUserDefaults] setInteger:score forKey:@"theScore"];
+
+    if (playerHighScore == 0) {
+        playerHighScore = score;
+        [[NSUserDefaults standardUserDefaults] setObject:sharedHighScore forKey:@"sharedHighScore"];
+        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"newHighScore"];
+    }
+    if (score > playerHighScore) {
+        playerHighScore = score;
+        sharedHighScore = [NSNumber numberWithInteger:playerHighScore];
+        [[NSUserDefaults standardUserDefaults] setObject:sharedHighScore forKey:@"sharedHighScore"];
+        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"newHighScore"];
+    }
+    if (score < playerHighScore) {
+//        [[NSUserDefaults standardUserDefaults] setInteger:score forKey:@"sharedHighScore"];
+//        [[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"newHighScore"];
+        sharedScore = [NSNumber numberWithInteger:score];
+        [[NSUserDefaults standardUserDefaults] setObject:sharedScore forKey:@"sharedScore"];
+    }
 }
 
 @end

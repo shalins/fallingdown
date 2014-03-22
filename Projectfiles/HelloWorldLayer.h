@@ -22,6 +22,7 @@
     int score;
     int targetScore;
     int scoreAdded;
+    int playerHighScore;
     
     NSString *scoreCounter;
     CCLabelTTF *scoreDisplay;
@@ -43,6 +44,9 @@
     CGPoint posTouchScreen;
     CGPoint coord;
     CGPoint playerpos;
+    
+    NSNumber *sharedHighScore;
+    NSNumber *sharedScore;
 
 
 }

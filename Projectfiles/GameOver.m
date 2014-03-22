@@ -23,7 +23,6 @@
         gameoverbg.position = ccp(screenCenter.x,screenCenter.y);
         [self addChild:gameoverbg z:0];
         
-        
         bgtrans = [CCSprite spriteWithFile:@"background1.png"];
         bgtrans.position = ccp(screenCenter.x,screenCenter.y);
         [self addChild:bgtrans z:10];
@@ -35,8 +34,27 @@
         [self addChild:over z:11];
         over.visible = FALSE;
 
-        CCLabelTTF *score = [CCLabelTTF labelWithString:@"SCORE" fontName:@"Pixelated" fontSize:70];
-        score.color = ccc3(56, 56, 56);
+//        int *score = [[NSUserDefaults standardUserDefaults] integerForKey:@"theScore"];
+//        NSString *s
+        
+//        CCLabelTTF *scoreDisplays = [CCLabelTTF labelWithString:@"SCORE: " fontName:@"Pixelated" fontSize:70];
+//        score.color = ccc3(56, 56, 56);
+        
+        NSNumber *endingScoreNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"sharedScore"];
+        endingScore = [endingScoreNumber intValue];
+        NSString *endScoreString = [[NSString alloc] initWithFormat:@"SCORE: %i", endingScore];
+        CCLabelTTF *scoreDisplays = [CCLabelTTF labelWithString:endScoreString fontName:@"Pixelated" fontSize:30];
+        scoreDisplays.position = ccp(screenCenter.x, screenCenter.y);
+        [self addChild:scoreDisplays z:12];
+        
+        
+        NSNumber *endingHighScoreNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"sharedHighScore"];
+        endingHighScore = [endingHighScoreNumber intValue];
+        NSString *endHighScoreString = [[NSString alloc] initWithFormat:@"HIGH SCORE: %i", endingHighScore];
+        CCLabelTTF *highScoreDisplays = [CCLabelTTF labelWithString:endHighScoreString fontName:@"Pixelated" fontSize:30];
+        highScoreDisplays.position = ccp(screenCenter.x, screenCenter.y + 30);
+        [self addChild:highScoreDisplays z:12];
+
 
         
         CCMenuItemImage *replay = [CCMenuItemImage itemWithNormalImage:@"restart.png" selectedImage:@"restart-sel.png" target:self selector:@selector(restart)];
