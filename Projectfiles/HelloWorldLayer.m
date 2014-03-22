@@ -14,7 +14,6 @@
     CCNode *_rightBranch;
 }
 static const CGFloat pipeDistance = 140.f;
-//int playerHighScore = 0;
 -(id) init
 {
 	if ((self = [super init]))
@@ -169,48 +168,25 @@ static const CGFloat pipeDistance = 140.f;
         if (CGRectIntersectsRect([_leftBranch boundingBox], [apple boundingBox]) == true || CGRectIntersectsRect([_rightBranch boundingBox], [apple boundingBox]) == true) {
             [self pauseSchedulerAndActions];
             
-//            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sharedHighScore"];
-            
-            // Set up the score
-            sharedScore = [NSNumber numberWithInteger:score - 1];
-            [[NSUserDefaults standardUserDefaults] setObject:sharedScore forKey:@"sharedScore"];
-            
-            if (playerHighScore == 0) {
-                playerHighScore = score;
-                [[NSUserDefaults standardUserDefaults] setInteger:playerHighScore forKey:@"sharedHighScore"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-            }
-            if (score > playerHighScore) {
-                playerHighScore = score;
-                [[NSUserDefaults standardUserDefaults] setInteger:playerHighScore forKey:@"sharedHighScore"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-            }
-
-//            [self gameOver];
+            [self gameOver];
             
             [[CCDirector sharedDirector] replaceScene:[CCTransitionSplitRows transitionWithDuration:0.5f scene:[GameOver node]]];
         }
 }
 
 -(void) gameOver {
-    [[NSUserDefaults standardUserDefaults] setInteger:score forKey:@"theScore"];
-
+    sharedScore = [NSNumber numberWithInteger:score - 1];
+    [[NSUserDefaults standardUserDefaults] setObject:sharedScore forKey:@"sharedScore"];
+    
     if (playerHighScore == 0) {
-        playerHighScore = score;
-        [[NSUserDefaults standardUserDefaults] setObject:sharedHighScore forKey:@"sharedHighScore"];
-        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"newHighScore"];
+        playerHighScore = sharedScore;
+        [[NSUserDefaults standardUserDefaults] setInteger:playerHighScore forKey:@"sharedHighScore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     if (score > playerHighScore) {
-        playerHighScore = score;
-        sharedHighScore = [NSNumber numberWithInteger:playerHighScore];
-        [[NSUserDefaults standardUserDefaults] setObject:sharedHighScore forKey:@"sharedHighScore"];
-        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"newHighScore"];
-    }
-    if (score < playerHighScore) {
-//        [[NSUserDefaults standardUserDefaults] setInteger:score forKey:@"sharedHighScore"];
-//        [[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"newHighScore"];
-        sharedScore = [NSNumber numberWithInteger:score];
-        [[NSUserDefaults standardUserDefaults] setObject:sharedScore forKey:@"sharedScore"];
+        playerHighScore = sharedScore;
+        [[NSUserDefaults standardUserDefaults] setInteger:playerHighScore forKey:@"sharedHighScore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
 
