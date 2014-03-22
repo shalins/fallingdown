@@ -13,7 +13,7 @@
     CCNode *_leftBranch;
     CCNode *_rightBranch;
 }
-static const CGFloat pipeDistance = 140.f;
+static const CGFloat pipeDistance = 120.f;
 -(id) init
 {
 	if ((self = [super init]))
@@ -95,7 +95,7 @@ static const CGFloat pipeDistance = 140.f;
     }
     
     // moves the branches
-    _rightBranch.position = ccp(_rightBranch.position.x, _rightBranch.position.y + (([[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"]*2)*dt));
+    _rightBranch.position = ccp(_rightBranch.position.x, _rightBranch.position.y + (([[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"]*3)*dt));
     _leftBranch.position = ccp(_leftBranch.position.x, _rightBranch.position.y);
     
     if (_rightBranch.position.y >= screenSize.height+10) {
@@ -149,15 +149,17 @@ static const CGFloat pipeDistance = 140.f;
 - (void)spawnNewBranches {
     
     int fromNumber = 220;
-    int toNumber = 480;
+    int toNumber = 400;
     int randomNumber = (arc4random()%(toNumber-fromNumber))+fromNumber;
+    
+    int toNumberForLeft = -40;
         
     _leftBranch = [CCSprite spriteWithFile:@"branch.png"];
     _rightBranch = [CCSprite spriteWithFile:@"branch.png"];
     
     _rightBranch.position = ccp(randomNumber, (screenCenter.y/30)-50);
-    _leftBranch.position = ccp(((_rightBranch.position.x/2)-(pipeDistance * 1.5)), _rightBranch.position.y);
-
+    _leftBranch.position = ccp((toNumberForLeft * 1.5) + ((_rightBranch.position.x/2)-pipeDistance), _rightBranch.position.y);
+    
     [self addChild:_rightBranch z:3];
     [self addChild:_leftBranch z:3];
 }
