@@ -28,7 +28,7 @@
         [self addChild:bgtrans z:10];
         bgtrans.visible = FALSE;
         
-        over = [CCLabelTTF labelWithString:@"GAME OVER" fontName:@"Pixelated" fontSize:65];
+        over = [CCLabelTTF labelWithString:@"GAME OVER" fontName:@"04b19" fontSize:50];
         over.position = ccp(screenCenter.x,screenCenter.y * 1.7);
         [self addChild:over z:11];
         over.visible = FALSE;
@@ -36,7 +36,7 @@
         NSNumber *endingScoreNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"sharedScore"];
         endingScore = [endingScoreNumber intValue];
         NSString *endScoreString = [[NSString alloc] initWithFormat:@"SCORE: %i", endingScore];
-        scoreDisplays = [CCLabelTTF labelWithString:endScoreString fontName:@"Pixelated" fontSize:40];
+        scoreDisplays = [CCLabelTTF labelWithString:endScoreString fontName:@"04b19" fontSize:35];
         scoreDisplays.position = ccp(screenCenter.x, screenCenter.y + 25);
         [self addChild:scoreDisplays z:12];
         scoreDisplays.visible = FALSE;
@@ -44,7 +44,7 @@
         NSNumber *endingHighScoreNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"sharedHighScore"];
         endingHighScore = [endingHighScoreNumber intValue];
         NSString *endHighScoreString = [[NSString alloc] initWithFormat:@"BEST: %i", endingHighScore];
-        highScoreDisplays = [CCLabelTTF labelWithString:endHighScoreString fontName:@"Pixelated" fontSize:40];
+        highScoreDisplays = [CCLabelTTF labelWithString:endHighScoreString fontName:@"04b19" fontSize:35];
         highScoreDisplays.position = ccp(screenCenter.x, screenCenter.y - 25);
         [self addChild:highScoreDisplays z:12];
         highScoreDisplays.visible = FALSE;
@@ -80,7 +80,8 @@
 }
 
 -(void) appleBounce:(CCSprite *) spriteToBeTheNextBigThing {
-    id dropdown = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x, screenCenter.y + 40)];
+    
+    id dropdown = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x, screenCenter.y)];
     id ease = [CCEaseIn actionWithAction:dropdown rate:1.3];
     id bounceaway = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x * 2.1, screenSize.height+30)];
     [spriteToBeTheNextBigThing runAction:[CCSequence actions:ease, bounceaway, nil]];

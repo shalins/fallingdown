@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38AEA1FC18DE2428008EC525 /* logo-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA1FA18DE2428008EC525 /* logo-hd.png */; };
+		38AEA1FD18DE2428008EC525 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA1FB18DE2428008EC525 /* logo.png */; };
+		38AEA20018DE2E8E008EC525 /* 04B_19__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA1FF18DE2E2B008EC525 /* 04B_19__.TTF */; };
 		38F9B3D518D67A920088077F /* title-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3D218D67A920088077F /* title-hd.png */; };
 		38F9B3D618D67A920088077F /* title-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3D318D67A920088077F /* title-iphone5hd.png */; };
 		38F9B3D718D67A920088077F /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3D418D67A920088077F /* title.png */; };
@@ -97,6 +100,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38AEA1FA18DE2428008EC525 /* logo-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-hd.png"; sourceTree = "<group>"; };
+		38AEA1FB18DE2428008EC525 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		38AEA1FF18DE2E2B008EC525 /* 04B_19__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = 04B_19__.TTF; sourceTree = "<group>"; };
 		38F9B3D218D67A920088077F /* title-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-hd.png"; sourceTree = "<group>"; };
 		38F9B3D318D67A920088077F /* title-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-iphone5hd.png"; sourceTree = "<group>"; };
 		38F9B3D418D67A920088077F /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
@@ -357,6 +363,9 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				38AEA1FF18DE2E2B008EC525 /* 04B_19__.TTF */,
+				38AEA1FA18DE2428008EC525 /* logo-hd.png */,
+				38AEA1FB18DE2428008EC525 /* logo.png */,
 				38F9B45718DD4D890088077F /* background1-hd.png */,
 				38F9B45818DD4D890088077F /* background1-ipad.png */,
 				38F9B45918DD4D890088077F /* background1-ipadhd.png */,
@@ -489,6 +498,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38AEA20018DE2E8E008EC525 /* 04B_19__.TTF in Resources */,
 				38F9B3F318D6925B0088077F /* home-sel-hd.png in Resources */,
 				38F9B3F218D6925B0088077F /* home-hd.png in Resources */,
 				38F9B3E918D68DD00088077F /* pixelated.ttf in Resources */,
@@ -505,7 +515,9 @@
 				38F9B45118D94F1B0088077F /* play-hd.png in Resources */,
 				38F9B3F618D6925B0088077F /* restart-hd.png in Resources */,
 				DCC1A10413A94ED5005BD75D /* Icon-Small@2x.png in Resources */,
+				38AEA1FD18DE2428008EC525 /* logo.png in Resources */,
 				DCC1A10613A94ED5005BD75D /* Icon.png in Resources */,
+				38AEA1FC18DE2428008EC525 /* logo-hd.png in Resources */,
 				38F9B45218D94F1B0088077F /* play-sel-hd.png in Resources */,
 				38F9B3F418D6925B0088077F /* home-sel.png in Resources */,
 				38F9B46018DD4D890088077F /* background1.png in Resources */,

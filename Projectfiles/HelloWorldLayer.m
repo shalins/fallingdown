@@ -48,7 +48,7 @@ static const CGFloat pipeDistance = 120.f;
         score = 0;
         scoreAdded = 1;
         scoreCounter = [NSString stringWithFormat:@"%i", score];
-        scoreDisplay = [CCLabelTTF labelWithString:scoreCounter fontName:@"Pixelated" fontSize:50];
+        scoreDisplay = [CCLabelTTF labelWithString:scoreCounter fontName:@"04b19" fontSize:50];
         scoreDisplay.color = ccc3(56, 56, 56);
         scoreDisplay.position = ccp(screenCenter.x,(screenSize.height * 7) / 8);
         [self addChild:scoreDisplay];
