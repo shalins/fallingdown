@@ -179,12 +179,12 @@ static const CGFloat pipeDistance = 140.f;
     [[NSUserDefaults standardUserDefaults] setObject:sharedScore forKey:@"sharedScore"];
     
     if (playerHighScore == 0) {
-        playerHighScore = sharedScore;
+        playerHighScore = score - 1;
         [[NSUserDefaults standardUserDefaults] setInteger:playerHighScore forKey:@"sharedHighScore"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     if (score > playerHighScore) {
-        playerHighScore = sharedScore;
+        playerHighScore = score - 1;
         [[NSUserDefaults standardUserDefaults] setInteger:playerHighScore forKey:@"sharedHighScore"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
