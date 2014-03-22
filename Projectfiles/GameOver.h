@@ -19,7 +19,7 @@
     CCMenu *menu3;
     CCMenu *menu4;
     CCMenu *menu5;
-    
+    CCLabelTTF *over;
     Apple *apple;
 }
 @end

@@ -23,7 +23,7 @@
         gameoverbg.position = ccp(screenCenter.x,screenCenter.y);
         [self addChild:gameoverbg];
         
-        CCLabelTTF *over = [CCLabelTTF labelWithString:@"GAME OVER" fontName:@"Pixelated" fontSize:65];
+        over = [CCLabelTTF labelWithString:@"GAME OVER" fontName:@"Pixelated" fontSize:65];
         over.color = ccc3(56, 56, 56);
         over.position = ccp(screenCenter.x,screenCenter.y * 1.7);
         [self addChild:over];
@@ -51,7 +51,7 @@
         });
         
         apple  = [CCSprite spriteWithFile:@"apple.png"];
-        apple.position = ccp(screenCenter.x / 1.5, screenCenter.y*3);
+        apple.position = ccp(-20, screenSize.height+30);
         apple.scale = 1.5;
         [self addChild:apple z:4];
         [self appleBounce:apple];
@@ -62,10 +62,9 @@
 
 -(void) appleBounce:(CCSprite *) spriteToBeTheNextBigThing {
     id dropdown = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x, screenCenter.y + 40)];
-    id ease = [CCEaseIn actionWithAction:dropdown rate:3];
-    id bounceaway = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x * 1.9, screenCenter.y * 3)];
-    id easeagain = [CCEaseIn actionWithAction:bounceaway rate:3];
-    [spriteToBeTheNextBigThing runAction:[CCSequence actions:ease, easeagain, nil]];
+    id ease = [CCEaseIn actionWithAction:dropdown rate:1.3];
+    id bounceaway = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x * 2.1, screenSize.height+30)];
+    [spriteToBeTheNextBigThing runAction:[CCSequence actions:ease, bounceaway, nil]];
 }
 
 
@@ -91,7 +90,7 @@
 
 -(void) addStuffIn {
     menu.visible = TRUE;
-    menu2.visible = TRUE;
+    over.visible = TRUE;
 }
 
 @end
