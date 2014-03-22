@@ -95,7 +95,7 @@ static const CGFloat pipeDistance = 120.f;
     }
     
     // moves the branches
-    _rightBranch.position = ccp(_rightBranch.position.x, _rightBranch.position.y + (([[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"]*3.4)*dt));
+    _rightBranch.position = ccp(_rightBranch.position.x, _rightBranch.position.y + (([[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"]*3.5)*dt));
     _leftBranch.position = ccp(_leftBranch.position.x, _rightBranch.position.y);
     
     if (_rightBranch.position.y >= screenSize.height+10) {
