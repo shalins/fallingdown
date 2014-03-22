@@ -47,8 +47,6 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>04B_19__.TTF</string>
