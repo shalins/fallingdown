@@ -36,27 +36,27 @@
         NSNumber *endingScoreNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"sharedScore"];
         endingScore = [endingScoreNumber intValue];
         NSString *endScoreString = [[NSString alloc] initWithFormat:@"SCORE: %i", endingScore];
-        scoreDisplays = [CCLabelTTF labelWithString:endScoreString fontName:@"Pixelated" fontSize:30];
-        scoreDisplays.position = ccp(screenCenter.x, screenCenter.y);
+        scoreDisplays = [CCLabelTTF labelWithString:endScoreString fontName:@"Pixelated" fontSize:40];
+        scoreDisplays.position = ccp(screenCenter.x, screenCenter.y + 30);
         [self addChild:scoreDisplays z:12];
         scoreDisplays.visible = FALSE;
         
         NSNumber *endingHighScoreNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"sharedHighScore"];
         endingHighScore = [endingHighScoreNumber intValue];
         NSString *endHighScoreString = [[NSString alloc] initWithFormat:@"HIGH SCORE: %i", endingHighScore];
-        highScoreDisplays = [CCLabelTTF labelWithString:endHighScoreString fontName:@"Pixelated" fontSize:30];
-        highScoreDisplays.position = ccp(screenCenter.x, screenCenter.y + 30);
+        highScoreDisplays = [CCLabelTTF labelWithString:endHighScoreString fontName:@"Pixelated" fontSize:40];
+        highScoreDisplays.position = ccp(screenCenter.x, screenCenter.y - 30);
         [self addChild:highScoreDisplays z:12];
         highScoreDisplays.visible = FALSE;
         
         CCMenuItemImage *replay = [CCMenuItemImage itemWithNormalImage:@"restart.png" selectedImage:@"restart-sel.png" target:self selector:@selector(restart)];
-        replay.scale = 0.8;
+        replay.scale = 0.9;
         CCMenuItemImage *gohome = [CCMenuItemImage itemWithNormalImage:@"home.png" selectedImage:@"home-sel.png" target:self selector:@selector(home)];
-        gohome.scale = 0.8;
+        gohome.scale = 0.9;
         
         menu = [CCMenu menuWithItems:replay, gohome, nil];
-        menu.position = ccp(screenCenter.x,screenCenter.y / 3);
-        [menu alignItemsVerticallyWithPadding:6];
+        menu.position = ccp(screenCenter.x,screenCenter.y / 2.85);
+        [menu alignItemsVerticallyWithPadding:8];
         [self addChild:menu z:11];
         menu.visible = FALSE;
         
