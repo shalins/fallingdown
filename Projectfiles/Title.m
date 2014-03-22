@@ -19,9 +19,17 @@
         screenCenter = [CCDirector sharedDirector].screenCenter;
         screenSize = [[CCDirector sharedDirector] winSize];
         
+        over = [CCLabelTTF labelWithString:@"DONT HIT \n NEWTON" fontName:@"Pixelated" fontSize:65];
+        over.position = ccp(screenCenter.x,screenCenter.y * 1.6);
+        [self addChild:over z:3];
+        
+        CCSprite *bgtrans = [CCSprite spriteWithFile:@"background1.png"];
+        bgtrans.position = ccp(screenCenter.x,screenCenter.y);
+        [self addChild:bgtrans z:1];
+        
         CCSprite *newtonUnderTree = [CCSprite spriteWithFile:@"title.png"];
         newtonUnderTree.position = ccp(screenCenter.x,screenCenter.y);
-        [self addChild:newtonUnderTree];
+        [self addChild:newtonUnderTree z:0];
         
         CCMenuItemImage *play = [CCMenuItemImage itemWithNormalImage:@"play.png" selectedImage:@"play-sel.png" target:self selector:@selector(start)];
         play.scale = 1;
@@ -29,7 +37,9 @@
         menu = [CCMenu menuWithItems:play, nil];
         menu.position = ccp(screenCenter.x,screenCenter.y / 2);
         [menu alignItemsVerticallyWithPadding:6];
-        [self addChild:menu];
+        [self addChild:menu z:3];
+        
+        
 
     }
     return self;

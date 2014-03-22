@@ -14,6 +14,8 @@
     CGPoint screenCenter;
     CGSize screenSize;
     
+    CCLabelTTF *over;
+    
     CCMenu *menu;
 }
 

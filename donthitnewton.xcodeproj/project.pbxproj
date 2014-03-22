@@ -30,6 +30,12 @@
 		38F9B45218D94F1B0088077F /* play-sel-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B44E18D94F1B0088077F /* play-sel-hd.png */; };
 		38F9B45318D94F1B0088077F /* play-sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B44F18D94F1B0088077F /* play-sel.png */; };
 		38F9B45418D94F1B0088077F /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B45018D94F1B0088077F /* play.png */; };
+		38F9B45618DD46B90088077F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F9B45518DD46B90088077F /* CoreMotion.framework */; };
+		38F9B45C18DD4D890088077F /* background1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B45718DD4D890088077F /* background1-hd.png */; };
+		38F9B45D18DD4D890088077F /* background1-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B45818DD4D890088077F /* background1-ipad.png */; };
+		38F9B45E18DD4D890088077F /* background1-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B45918DD4D890088077F /* background1-ipadhd.png */; };
+		38F9B45F18DD4D890088077F /* background1-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B45A18DD4D890088077F /* background1-iphone5hd.png */; };
+		38F9B46018DD4D890088077F /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B45B18DD4D890088077F /* background1.png */; };
 		7051AD9818AEF0FD00FD227F /* Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 7051AD9718AEF0FD00FD227F /* Title.m */; };
 		7055C82218AF420C006C287A /* newtonundertree.png in Resources */ = {isa = PBXBuildFile; fileRef = 7055C81E18AF420C006C287A /* newtonundertree.png */; };
 		7055C82318AF420C006C287A /* newtonundertree-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7055C81F18AF420C006C287A /* newtonundertree-hd.png */; };
@@ -115,6 +121,12 @@
 		38F9B44E18D94F1B0088077F /* play-sel-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-sel-hd.png"; sourceTree = "<group>"; };
 		38F9B44F18D94F1B0088077F /* play-sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-sel.png"; sourceTree = "<group>"; };
 		38F9B45018D94F1B0088077F /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		38F9B45518DD46B90088077F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		38F9B45718DD4D890088077F /* background1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background1-hd.png"; sourceTree = "<group>"; };
+		38F9B45818DD4D890088077F /* background1-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background1-ipad.png"; sourceTree = "<group>"; };
+		38F9B45918DD4D890088077F /* background1-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background1-ipadhd.png"; sourceTree = "<group>"; };
+		38F9B45A18DD4D890088077F /* background1-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background1-iphone5hd.png"; sourceTree = "<group>"; };
+		38F9B45B18DD4D890088077F /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1.png; sourceTree = "<group>"; };
 		7051AD9618AEF0FC00FD227F /* Title.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Title.h; sourceTree = "<group>"; };
 		7051AD9718AEF0FD00FD227F /* Title.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Title.m; sourceTree = "<group>"; };
 		7055C81E18AF420C006C287A /* newtonundertree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newtonundertree.png; sourceTree = "<group>"; };
@@ -193,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38F9B45618DD46B90088077F /* CoreMotion.framework in Frameworks */,
 				709DC00B18B05F7600FE1A68 /* Foundation.framework in Frameworks */,
 				709DC00918B05F6A00FE1A68 /* CoreText.framework in Frameworks */,
 				709DC00718B05F6200FE1A68 /* CoreGraphics.framework in Frameworks */,
@@ -253,6 +266,7 @@
 		DCC1A0E613A94ED5005BD75D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38F9B45518DD46B90088077F /* CoreMotion.framework */,
 				709DC00A18B05F7600FE1A68 /* Foundation.framework */,
 				709DC00818B05F6A00FE1A68 /* CoreText.framework */,
 				709DC00618B05F6200FE1A68 /* CoreGraphics.framework */,
@@ -343,6 +357,11 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				38F9B45718DD4D890088077F /* background1-hd.png */,
+				38F9B45818DD4D890088077F /* background1-ipad.png */,
+				38F9B45918DD4D890088077F /* background1-ipadhd.png */,
+				38F9B45A18DD4D890088077F /* background1-iphone5hd.png */,
+				38F9B45B18DD4D890088077F /* background1.png */,
 				38F9B44D18D94F1B0088077F /* play-hd.png */,
 				38F9B44E18D94F1B0088077F /* play-sel-hd.png */,
 				38F9B44F18D94F1B0088077F /* play-sel.png */,
@@ -489,13 +508,18 @@
 				DCC1A10613A94ED5005BD75D /* Icon.png in Resources */,
 				38F9B45218D94F1B0088077F /* play-sel-hd.png in Resources */,
 				38F9B3F418D6925B0088077F /* home-sel.png in Resources */,
+				38F9B46018DD4D890088077F /* background1.png in Resources */,
+				38F9B45C18DD4D890088077F /* background1-hd.png in Resources */,
 				38F9B3D718D67A920088077F /* title.png in Resources */,
 				38F9B45318D94F1B0088077F /* play-sel.png in Resources */,
+				38F9B45D18DD4D890088077F /* background1-ipad.png in Resources */,
 				38F9B3F718D6925B0088077F /* restart-sel-hd.png in Resources */,
 				7055C82318AF420C006C287A /* newtonundertree-hd.png in Resources */,
+				38F9B45E18DD4D890088077F /* background1-ipadhd.png in Resources */,
 				38F9B3F518D6925B0088077F /* home.png in Resources */,
 				7055C82518AF420C006C287A /* newton-hd.png in Resources */,
 				7055C82418AF420C006C287A /* newton.png in Resources */,
+				38F9B45F18DD4D890088077F /* background1-iphone5hd.png in Resources */,
 				38F9B3DC18D67D890088077F /* gamebg-iphone5hd.png in Resources */,
 				7055C82818AF643D006C287A /* apple.png in Resources */,
 				38F9B3E518D681DA0088077F /* gameover-iphone5hd.png in Resources */,

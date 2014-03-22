@@ -21,5 +21,6 @@
     CCMenu *menu5;
     CCLabelTTF *over;
     Apple *apple;
+    CCSprite *bgtrans;
 }
 @end
