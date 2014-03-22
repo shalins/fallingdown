@@ -37,15 +37,15 @@
         endingScore = [endingScoreNumber intValue];
         NSString *endScoreString = [[NSString alloc] initWithFormat:@"SCORE: %i", endingScore];
         scoreDisplays = [CCLabelTTF labelWithString:endScoreString fontName:@"Pixelated" fontSize:40];
-        scoreDisplays.position = ccp(screenCenter.x, screenCenter.y + 30);
+        scoreDisplays.position = ccp(screenCenter.x, screenCenter.y + 25);
         [self addChild:scoreDisplays z:12];
         scoreDisplays.visible = FALSE;
         
         NSNumber *endingHighScoreNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"sharedHighScore"];
         endingHighScore = [endingHighScoreNumber intValue];
-        NSString *endHighScoreString = [[NSString alloc] initWithFormat:@"HIGH SCORE: %i", endingHighScore];
+        NSString *endHighScoreString = [[NSString alloc] initWithFormat:@"BEST: %i", endingHighScore];
         highScoreDisplays = [CCLabelTTF labelWithString:endHighScoreString fontName:@"Pixelated" fontSize:40];
-        highScoreDisplays.position = ccp(screenCenter.x, screenCenter.y - 30);
+        highScoreDisplays.position = ccp(screenCenter.x, screenCenter.y - 25);
         [self addChild:highScoreDisplays z:12];
         highScoreDisplays.visible = FALSE;
         
