@@ -9,11 +9,11 @@
 #import "GameOver.h"
 
 @implementation HelloWorldLayer {
+    
     CCNode *_leftBranch;
     CCNode *_rightBranch;
 }
 static const CGFloat pipeDistance = 140.f;
-
 -(id) init
 {
 	if ((self = [super init]))
@@ -41,6 +41,15 @@ static const CGFloat pipeDistance = 140.f;
         scrollSpeed = [[NSUserDefaults standardUserDefaults] integerForKey:@"scrollSpeed"];
         [[NSUserDefaults standardUserDefaults] setInteger:150 forKey:@"scrollSpeed"];
         
+        //Score Display
+        score = 0;
+        scoreAdded = 1;
+        scoreCounter = [NSString stringWithFormat:@"%i", score];
+        scoreDisplay = [CCLabelTTF labelWithString:scoreCounter fontName:@"Pixelated" fontSize:50];
+        scoreDisplay.color = ccc3(56, 56, 56);
+        scoreDisplay.position = ccp(screenCenter.x,(screenSize.height * 7) / 8);
+        [self addChild:scoreDisplay];
+        
         apple  = [CCSprite spriteWithFile:@"apple.png"];
         apple.position = ccp(screenCenter.x, screenCenter.y);
         [self addChild:apple z:4];
@@ -51,6 +60,7 @@ static const CGFloat pipeDistance = 140.f;
         dispatch_time_t countdown = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC));
         dispatch_after(countdown, dispatch_get_main_queue(), ^(void){
             [self spawnNewBranches];
+            [self rewardPlayer];
         });
 	}
 
@@ -63,6 +73,7 @@ static const CGFloat pipeDistance = 140.f;
 {
     [self detectCollisions];
     [self grabTouchCoord];
+    [self addPoint];
 }
 
 #pragma mark - Scrolling
@@ -87,9 +98,18 @@ static const CGFloat pipeDistance = 140.f;
     if (_rightBranch.position.y >= screenSize.height+10) {
         [self removeChild:_leftBranch cleanup:YES];
         [self removeChild:_rightBranch cleanup:YES];
-        
         [self spawnNewBranches];
+        [self rewardPlayer];
     }
+    //
+    if (_rightBranch.position.y >= apple.position.y) {
+        [scoreDisplay setString:[NSString stringWithFormat:@"%i", score]];
+//        [self schedule:@selector(addPoint)];
+//        shouldScoreChange = YES;
+    }
+//    else if (_leftBranch.position.y == screenCenter.y + 20){
+//        shouldScoreChange = NO;
+//    }
 }
 
 #pragma mark - Game Actions
@@ -111,6 +131,27 @@ static const CGFloat pipeDistance = 140.f;
             //            [apple runAction:boo];
         }
     }
+}
+
+- (void)addPoint
+{
+//    if (shouldScoreChange == YES) {
+//        shouldScoreChange = NO;
+//        score += 1/50;
+//        [scoreDisplay setString:[NSString stringWithFormat:@"%i", score]];
+//    }
+    if (score < targetScore) {
+        int increment = ((targetScore) - score);
+        if (increment < 1) {
+            increment = 0;
+        }
+        score += increment;
+    }
+
+}
+-(void) rewardPlayer
+{
+    targetScore = score + scoreAdded;
 }
 
 #pragma mark - Obstacle Spawning
@@ -139,6 +180,10 @@ static const CGFloat pipeDistance = 140.f;
 {
         if (CGRectIntersectsRect([_leftBranch boundingBox], [apple boundingBox]) == true || CGRectIntersectsRect([_rightBranch boundingBox], [apple boundingBox]) == true) {
             [self pauseSchedulerAndActions];
+            
+            // Set up the score
+            [[NSUserDefaults standardUserDefaults] setInteger:score forKey:@"theScore"];
+            
             [[CCDirector sharedDirector] replaceScene:[CCTransitionSplitRows transitionWithDuration:0.5f scene:[GameOver node]]];
         }
 }

@@ -23,15 +23,12 @@
         gameoverbg.position = ccp(screenCenter.x,screenCenter.y);
         [self addChild:gameoverbg];
         
-        CCLabelTTF *over = [CCLabelTTF labelWithString:@"GAME OVER" fontName:@"Pixelated" fontSize:70];
+        CCLabelTTF *over = [CCLabelTTF labelWithString:@"GAME OVER" fontName:@"Pixelated" fontSize:65];
         over.color = ccc3(56, 56, 56);
-  
-        CCMenuItemLabel *gameover = [CCMenuItemLabel itemWithLabel:over];
-        menu2 = [CCMenu menuWithItems:gameover, nil];
-        menu2.position = ccp(screenCenter.x,screenCenter.y * 1.5);
-        [self addChild:menu2];
-        menu2.visible = FALSE;
-        
+        over.position = ccp(screenCenter.x,screenCenter.y * 1.7);
+        [self addChild:over];
+        over.visible = FALSE;
+
         CCLabelTTF *score = [CCLabelTTF labelWithString:@"SCORE" fontName:@"Pixelated" fontSize:70];
         score.color = ccc3(56, 56, 56);
 
@@ -50,7 +47,7 @@
         dispatch_time_t countdown = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC));
         dispatch_after(countdown, dispatch_get_main_queue(), ^(void){
             [self fadeEffect:menu];
-            [self fadeEffect:menu2];
+            [self fadeEffectLabel:over];
         });
         
         apple  = [CCSprite spriteWithFile:@"apple.png"];
@@ -65,8 +62,10 @@
 
 -(void) appleBounce:(CCSprite *) spriteToBeTheNextBigThing {
     id dropdown = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x, screenCenter.y + 40)];
+    id ease = [CCEaseIn actionWithAction:dropdown rate:3];
     id bounceaway = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x * 1.9, screenCenter.y * 3)];
-    [spriteToBeTheNextBigThing runAction:[CCSequence actions:dropdown, bounceaway, nil]];
+    id easeagain = [CCEaseIn actionWithAction:bounceaway rate:3];
+    [spriteToBeTheNextBigThing runAction:[CCSequence actions:ease, easeagain, nil]];
 }
 
 
@@ -83,6 +82,13 @@
     id fadeIn = [CCFadeIn actionWithDuration:2.0f];
     [spriteToBeTheNextBigThing runAction:[CCSequence actions:delay,addStuffIn,fadeIn, nil]];
 }
+-(void) fadeEffectLabel:(CCLabelTTF *) spriteToBeTheNextBigThing {
+    id delay = [CCDelayTime actionWithDuration:1.25];
+    id addStuffIn = [CCCallFunc actionWithTarget:self selector:@selector(addStuffIn)];
+    id fadeIn = [CCFadeIn actionWithDuration:2.0f];
+    [spriteToBeTheNextBigThing runAction:[CCSequence actions:delay,addStuffIn,fadeIn, nil]];
+}
+
 -(void) addStuffIn {
     menu.visible = TRUE;
     menu2.visible = TRUE;

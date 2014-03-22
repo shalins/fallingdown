@@ -18,7 +18,13 @@
     // backgrounds
     CCSprite *background;
     CCSprite *bg2;
+        
+    int score;
+    int targetScore;
+    int scoreAdded;
     
+    NSString *scoreCounter;
+    CCLabelTTF *scoreDisplay;
     
     int *scrollSpeed;
     
