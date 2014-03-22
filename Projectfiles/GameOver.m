@@ -29,33 +29,25 @@
         bgtrans.visible = FALSE;
         
         over = [CCLabelTTF labelWithString:@"GAME OVER" fontName:@"Pixelated" fontSize:65];
-        over.color = ccc3(56, 56, 56);
         over.position = ccp(screenCenter.x,screenCenter.y * 1.7);
         [self addChild:over z:11];
         over.visible = FALSE;
-
-//        int *score = [[NSUserDefaults standardUserDefaults] integerForKey:@"theScore"];
-//        NSString *s
-        
-//        CCLabelTTF *scoreDisplays = [CCLabelTTF labelWithString:@"SCORE: " fontName:@"Pixelated" fontSize:70];
-//        score.color = ccc3(56, 56, 56);
         
         NSNumber *endingScoreNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"sharedScore"];
         endingScore = [endingScoreNumber intValue];
         NSString *endScoreString = [[NSString alloc] initWithFormat:@"SCORE: %i", endingScore];
-        CCLabelTTF *scoreDisplays = [CCLabelTTF labelWithString:endScoreString fontName:@"Pixelated" fontSize:30];
+        scoreDisplays = [CCLabelTTF labelWithString:endScoreString fontName:@"Pixelated" fontSize:30];
         scoreDisplays.position = ccp(screenCenter.x, screenCenter.y);
         [self addChild:scoreDisplays z:12];
-        
+        scoreDisplays.visible = FALSE;
         
         NSNumber *endingHighScoreNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"sharedHighScore"];
         endingHighScore = [endingHighScoreNumber intValue];
         NSString *endHighScoreString = [[NSString alloc] initWithFormat:@"HIGH SCORE: %i", endingHighScore];
-        CCLabelTTF *highScoreDisplays = [CCLabelTTF labelWithString:endHighScoreString fontName:@"Pixelated" fontSize:30];
+        highScoreDisplays = [CCLabelTTF labelWithString:endHighScoreString fontName:@"Pixelated" fontSize:30];
         highScoreDisplays.position = ccp(screenCenter.x, screenCenter.y + 30);
         [self addChild:highScoreDisplays z:12];
-
-
+        highScoreDisplays.visible = FALSE;
         
         CCMenuItemImage *replay = [CCMenuItemImage itemWithNormalImage:@"restart.png" selectedImage:@"restart-sel.png" target:self selector:@selector(restart)];
         replay.scale = 0.8;
@@ -72,6 +64,8 @@
         dispatch_after(countdown, dispatch_get_main_queue(), ^(void){
             [self fadeEffect:menu];
             [self fadeEffectLabel:over];
+            [self fadeEffectLabel:highScoreDisplays];
+            [self fadeEffectLabel:scoreDisplays];
             [self fadeEffectSprite:bgtrans];
         });
         
@@ -84,9 +78,6 @@
     }
     return self;
 }
-
-
-
 
 -(void) appleBounce:(CCSprite *) spriteToBeTheNextBigThing {
     id dropdown = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x, screenCenter.y + 40)];
@@ -124,6 +115,8 @@
     menu.visible = TRUE;
     over.visible = TRUE;
     bgtrans.visible = TRUE;
+    highScoreDisplays.visible = TRUE;
+    scoreDisplays.visible = TRUE;
 }
 
 @end

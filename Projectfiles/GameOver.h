@@ -24,5 +24,7 @@
     CCSprite *bgtrans;
     int endingScore;
     int endingHighScore;
+    CCLabelTTF *scoreDisplays;
+    CCLabelTTF *highScoreDisplays;
 }
 @end
