@@ -81,7 +81,11 @@
 
 -(void) appleBounce:(CCSprite *) spriteToBeTheNextBigThing {
     
-    id dropdown = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x, screenCenter.y)];
+    // iPhone 5 Optimizations
+    if (screenSize.height == 1136) {
+        id dropdown = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x, screenCenter.y)];
+    }
+    id dropdown = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x, screenCenter.y + 40)];
     id ease = [CCEaseIn actionWithAction:dropdown rate:1.3];
     id bounceaway = [CCMoveTo actionWithDuration:1.0f position:ccp(screenCenter.x * 2.1, screenSize.height+30)];
     [spriteToBeTheNextBigThing runAction:[CCSequence actions:ease, bounceaway, nil]];

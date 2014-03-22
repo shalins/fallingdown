@@ -22,19 +22,7 @@
         over = [CCLabelTTF labelWithString:@"DONT HIT \n NEWTON" fontName:@"04b19" fontSize:65];
         over.position = ccp(screenCenter.x,screenCenter.y * 1.6);
         [self addChild:over z:3];
-        
-//        CCTintTo* tint4 = [CCTintTo actionWithDuration:2 red:0 green:255 blue:255];
-//        CCTintTo* tint5 = [CCTintTo actionWithDuration:2 red:84 green:84 blue:84];
-//        CCTintTo* tint6 = [CCTintTo actionWithDuration:2 red:100 green:0 blue:255];
-//        CCSequence* tintSequence = [CCSequence actions:tint5, nil];
-//        CCRepeatForever* repeatTint = [CCRepeatForever actionWithAction:tintSequence];
-//        [over runAction:repeatTint];
-        
-//        CCSprite *title = [CCSprite spriteWithFile:@"logo.png"];
-//        title.position = ccp(screenCenter.x,screenCenter.y * 1.55);
-//        title.scale = 0.7;
-//        [self addChild:title z:3];
-        
+                
         CCSprite *bgtrans = [CCSprite spriteWithFile:@"background1.png"];
         bgtrans.position = ccp(screenCenter.x,screenCenter.y);
 //        [self addChild:bgtrans z:1];

@@ -57,13 +57,19 @@ static const CGFloat pipeDistance = 120.f;
         apple.position = ccp(screenCenter.x, screenCenter.y);
         [self addChild:apple z:4];
         
+        CCSprite *tutorial  = [CCSprite spriteWithFile:@"tutorial.png"];
+        tutorial.position = ccp(screenCenter.x, (screenCenter.y * 7)/12);
+        [self addChild:tutorial z:5];
+
+        
         // Run the update method
         [self scheduleUpdate];
 
-        dispatch_time_t countdown = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC));
+        dispatch_time_t countdown = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC));
         dispatch_after(countdown, dispatch_get_main_queue(), ^(void){
             [self spawnNewBranches];
             [self rewardPlayer];
+            [self removeChild:tutorial];
         });
 	}
 
