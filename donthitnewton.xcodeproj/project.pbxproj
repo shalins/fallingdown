@@ -32,11 +32,11 @@
 		38AEA22F18DE33B3008EC525 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA21718DE33B3008EC525 /* Icon@2x.png */; };
 		38AEA23018DE33B3008EC525 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA21818DE33B3008EC525 /* iTunesArtwork.png */; };
 		38AEA23118DE33B3008EC525 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA21918DE33B3008EC525 /* iTunesArtwork@2x.png */; };
-		38AEA23518DE355B008EC525 /* launch-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA23218DE355B008EC525 /* launch-hd.png */; };
-		38AEA23618DE355B008EC525 /* launch-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA23318DE355B008EC525 /* launch-iphone5hd.png */; };
-		38AEA23718DE355B008EC525 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA23418DE355B008EC525 /* launch.png */; };
 		38AEA23A18DE403D008EC525 /* tutorial-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA23818DE403D008EC525 /* tutorial-hd.png */; };
 		38AEA23B18DE403D008EC525 /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA23918DE403D008EC525 /* tutorial.png */; };
+		38AEA24118DE9F60008EC525 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA23E18DE9F60008EC525 /* Default-568h@2x.png */; };
+		38AEA24218DE9F60008EC525 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA23F18DE9F60008EC525 /* Default.png */; };
+		38AEA24318DE9F60008EC525 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38AEA24018DE9F60008EC525 /* Default@2x.png */; };
 		38F9B3D518D67A920088077F /* title-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3D218D67A920088077F /* title-hd.png */; };
 		38F9B3D618D67A920088077F /* title-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3D318D67A920088077F /* title-iphone5hd.png */; };
 		38F9B3D718D67A920088077F /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F9B3D418D67A920088077F /* title.png */; };
@@ -144,11 +144,11 @@
 		38AEA21718DE33B3008EC525 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		38AEA21818DE33B3008EC525 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		38AEA21918DE33B3008EC525 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		38AEA23218DE355B008EC525 /* launch-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch-hd.png"; sourceTree = "<group>"; };
-		38AEA23318DE355B008EC525 /* launch-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch-iphone5hd.png"; sourceTree = "<group>"; };
-		38AEA23418DE355B008EC525 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
 		38AEA23818DE403D008EC525 /* tutorial-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-hd.png"; sourceTree = "<group>"; };
 		38AEA23918DE403D008EC525 /* tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial.png; sourceTree = "<group>"; };
+		38AEA23E18DE9F60008EC525 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		38AEA23F18DE9F60008EC525 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		38AEA24018DE9F60008EC525 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		38F9B3D218D67A920088077F /* title-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-hd.png"; sourceTree = "<group>"; };
 		38F9B3D318D67A920088077F /* title-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-iphone5hd.png"; sourceTree = "<group>"; };
 		38F9B3D418D67A920088077F /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 		DC9C33E713B5024400931BF2 /* BuildSettings-Debug-Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Debug-Mac.xcconfig"; sourceTree = "<group>"; };
 		DC9C33E813B5024400931BF2 /* BuildSettings-Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Mac.xcconfig"; sourceTree = "<group>"; };
 		DC9C33E913B5024400931BF2 /* BuildSettings-Release-Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Release-Mac.xcconfig"; sourceTree = "<group>"; };
-		DCC1A0E313A94ED5005BD75D /* donthitnewton-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "donthitnewton-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCC1A0E313A94ED5005BD75D /* Newton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Newton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC1A10913A94ED5005BD75D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCC1A25A13A94EE6005BD75D /* donthitnewton-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "donthitnewton-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC1A26813A94EE6005BD75D /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -332,7 +332,7 @@
 		DCC1A0E413A94ED5005BD75D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DCC1A0E313A94ED5005BD75D /* donthitnewton-iOS.app */,
+				DCC1A0E313A94ED5005BD75D /* Newton.app */,
 				DCC1A25A13A94EE6005BD75D /* donthitnewton-Mac.app */,
 			);
 			name = Products;
@@ -424,11 +424,11 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				38AEA23E18DE9F60008EC525 /* Default-568h@2x.png */,
+				38AEA23F18DE9F60008EC525 /* Default.png */,
+				38AEA24018DE9F60008EC525 /* Default@2x.png */,
 				38AEA23818DE403D008EC525 /* tutorial-hd.png */,
 				38AEA23918DE403D008EC525 /* tutorial.png */,
-				38AEA23218DE355B008EC525 /* launch-hd.png */,
-				38AEA23318DE355B008EC525 /* launch-iphone5hd.png */,
-				38AEA23418DE355B008EC525 /* launch.png */,
 				38AEA20118DE33B3008EC525 /* Icons */,
 				38AEA1FF18DE2E2B008EC525 /* 04B_19__.TTF */,
 				38F9B45718DD4D890088077F /* background1-hd.png */,
@@ -511,7 +511,7 @@
 			);
 			name = "donthitnewton-iOS";
 			productName = "Hello-World-iOS";
-			productReference = DCC1A0E313A94ED5005BD75D /* donthitnewton-iOS.app */;
+			productReference = DCC1A0E313A94ED5005BD75D /* Newton.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DCC1A25913A94EE6005BD75D /* donthitnewton-Mac */ = {
@@ -568,7 +568,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38AEA23718DE355B008EC525 /* launch.png in Resources */,
 				38AEA22918DE33B3008EC525 /* Icon-72@2x.png in Resources */,
 				38AEA20018DE2E8E008EC525 /* 04B_19__.TTF in Resources */,
 				38AEA21D18DE33B3008EC525 /* AppIcon40x40@2x.png in Resources */,
@@ -581,7 +580,9 @@
 				38AEA22B18DE33B3008EC525 /* Icon-Small-50@2x.png in Resources */,
 				38AEA21F18DE33B3008EC525 /* AppIcon50x50@2x.png in Resources */,
 				38F9B3DD18D67D890088077F /* gamebg.png in Resources */,
+				38AEA24318DE9F60008EC525 /* Default@2x.png in Resources */,
 				38F9B3F818D6925B0088077F /* restart-sel.png in Resources */,
+				38AEA24218DE9F60008EC525 /* Default.png in Resources */,
 				38AEA22418DE33B3008EC525 /* AppIcon72x72.png in Resources */,
 				38AEA22518DE33B3008EC525 /* AppIcon72x72@2x.png in Resources */,
 				38AEA21A18DE33B3008EC525 /* AppIcon29x29.png in Resources */,
@@ -594,9 +595,9 @@
 				38F9B45218D94F1B0088077F /* play-sel-hd.png in Resources */,
 				38F9B3F418D6925B0088077F /* home-sel.png in Resources */,
 				38F9B46018DD4D890088077F /* background1.png in Resources */,
+				38AEA24118DE9F60008EC525 /* Default-568h@2x.png in Resources */,
 				38F9B45C18DD4D890088077F /* background1-hd.png in Resources */,
 				38F9B3D718D67A920088077F /* title.png in Resources */,
-				38AEA23618DE355B008EC525 /* launch-iphone5hd.png in Resources */,
 				38AEA23B18DE403D008EC525 /* tutorial.png in Resources */,
 				38AEA23A18DE403D008EC525 /* tutorial-hd.png in Resources */,
 				38F9B45318D94F1B0088077F /* play-sel.png in Resources */,
@@ -606,7 +607,6 @@
 				7055C82318AF420C006C287A /* newtonundertree-hd.png in Resources */,
 				38AEA21E18DE33B3008EC525 /* AppIcon50x50.png in Resources */,
 				38AEA22018DE33B3008EC525 /* AppIcon57x57.png in Resources */,
-				38AEA23518DE355B008EC525 /* launch-hd.png in Resources */,
 				38F9B45E18DD4D890088077F /* background1-ipadhd.png in Resources */,
 				38F9B3F518D6925B0088077F /* home.png in Resources */,
 				7055C82518AF420C006C287A /* newton-hd.png in Resources */,
@@ -718,8 +718,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DCFA90EF13B4F6F7009DD35A /* BuildSettings-Debug-iOS.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = Newton;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -728,8 +729,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DCFA90F013B4F811009DD35A /* BuildSettings-Release-iOS.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = Newton;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

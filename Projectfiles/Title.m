@@ -22,7 +22,7 @@
         over = [CCLabelTTF labelWithString:@"DONT HIT \n NEWTON" fontName:@"04b19" fontSize:65];
         over.position = ccp(screenCenter.x,screenCenter.y * 1.6);
         [self addChild:over z:3];
-                
+        
         CCSprite *bgtrans = [CCSprite spriteWithFile:@"background1.png"];
         bgtrans.position = ccp(screenCenter.x,screenCenter.y);
 //        [self addChild:bgtrans z:1];
